@@ -2,6 +2,7 @@ package app.zingo.merabihar.WebApi;
 
 import java.util.ArrayList;
 
+import app.zingo.merabihar.Model.FollowerNonFollowers;
 import app.zingo.merabihar.Model.UserProfile;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -46,4 +47,7 @@ public interface ProfileAPI {
 
     @GET("Profiles/GetProfileByUserRoleId/{UserRoleId}")
     Call<ArrayList<UserProfile>> getUserByUserRoleId(@Path("UserRoleId") int id);
+
+    @GET("Follow/GetFollowersAndNonFollowersByProfileId/{ProfileId}")
+    Call<FollowerNonFollowers> getOtherProfiles(@Path("ProfileId") int id);
 }

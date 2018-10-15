@@ -35,22 +35,21 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:clickable="false"
-                        android:saveEnabled="false"
+
                         app:srcCompat="@drawable/ic_search_black_24dp"
                         ></ImageView>
 
-                    <EditText android:id="@+id/search_editText"
+                    <TextView
+                        android:id="@+id/search_editText"
                         android:layout_width="fill_parent"
                         android:layout_height="50dp"
                         android:hint="Search.."
+                        android:textSize="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
                         android:layout_marginLeft="2dp"
-                        android:layout_weight="1"
-                        android:enabled="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:background="@android:color/transparent"
-                        android:inputType="textVisiblePassword"/>
+                        />
 
                 </LinearLayout>
 

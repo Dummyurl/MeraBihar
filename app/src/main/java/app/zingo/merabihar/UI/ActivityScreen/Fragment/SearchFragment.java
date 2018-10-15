@@ -3,6 +3,7 @@ package app.zingo.merabihar.UI.ActivityScreen.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import app.zingo.merabihar.Model.ActivityImages;
 import app.zingo.merabihar.Model.Category;
 import app.zingo.merabihar.R;
 import app.zingo.merabihar.UI.ActivityScreen.Events.ContentSearchScreen;
+import app.zingo.merabihar.UI.ActivityScreen.SearchScreens.SearchActivity;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
 import app.zingo.merabihar.WebApi.ActivityApi;
@@ -38,7 +40,7 @@ import retrofit2.Response;
 public class SearchFragment extends Fragment {
 
     ListView mImagesList;
-    LinearLayout mCategoryLayout;
+    LinearLayout mCategoryLayout,mSearchLay;
 
 
     public SearchFragment() {
@@ -67,6 +69,7 @@ public class SearchFragment extends Fragment {
 
             mImagesList = (ListView) view.findViewById(R.id.image_list);
             mCategoryLayout = (LinearLayout) view.findViewById(R.id.category_layout);
+            mSearchLay = (LinearLayout) view.findViewById(R.id.search_layout);
 
             newInstance();
 
@@ -74,6 +77,14 @@ public class SearchFragment extends Fragment {
            getActivityImages();
 
 
+           mSearchLay.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+
+                   Intent search = new Intent(getActivity(), SearchActivity.class);
+                   startActivity(search);
+               }
+           });
 
             return view;
 
