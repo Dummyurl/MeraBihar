@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/rootView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <include layout="@layout/toolbar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:background="#FFFFFFFF"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/appBar"
+        android:layout_alignParentBottom="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.constraint.Guideline
+                android:orientation="vertical"
+                android:id="@+id/verticalGuideline"
+                android:layout_width="0.0dip"
+                android:layout_height="0.0dip"
+                app:layout_constraintGuide_percent="0.5"
+                 />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/facebook"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="20.0dip"
+                android:layout_marginRight="5.0dip"
+                android:text="Facebook"
+                n3:layout_constraintLeft_toLeftOf="parent"
+                n3:layout_constraintRight_toLeftOf="@id/verticalGuideline"
+                n3:layout_constraintTop_toTopOf="parent"
+                style="@style/facebook_button"
+                xmlns:n3="http://schemas.android.com/apk/res-auto" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/google" android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginTop="20.0dip"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="Google"
+                app:layout_constraintLeft_toLeftOf="@id/verticalGuideline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/google_button"
+                 />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:textSize="@dimen/tinyFont"
+                android:textColor="@color/grey_charcoal"
+                android:id="@+id/useEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20.0dip"
+                android:text="or"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/facebook"
+                />
+
+            <View
+                android:background="@color/urban_grey"
+                android:layout_width="0.0dip"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                app:layout_constraintBottom_toBottomOf="@id/useEmail"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/useEmail"
+                app:layout_constraintTop_toTopOf="@id/useEmail"
+                 />
+
+            <View
+                android:background="@color/urban_grey"
+                android:layout_width="0.0dip"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                app:layout_constraintBottom_toBottomOf="@id/useEmail"
+                app:layout_constraintLeft_toRightOf="@id/useEmail"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/useEmail"
+                 />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/emailInputLayout"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="20.0dip"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:hint="Email address"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/useEmail">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/email"
+                    android:maxLength="50"
+                    android:inputType="textEmailAddress"
+                    style="@style/fp_editText" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <CheckBox
+                android:textSize="@dimen/veryTinyFont"
+                android:textColor="@color/grey_charcoal"
+                android:textColorLink="@color/blue_express_delivery"
+                android:id="@+id/termsCondition"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="8.0dip"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
+                />
+
+            <android.support.v7.widget.AppCompatButton
+                android:textSize="@dimen/regularFont"
+                android:textColor="@color/white"
+                android:id="@+id/createAccount"
+                android:background="@drawable/selector_blue_corner_button"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="20.0dip"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="Create Account"
+                android:textAllCaps="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/termsCondition"
+                 />
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

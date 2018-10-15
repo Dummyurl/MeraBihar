@@ -1,0 +1,209 @@
+<resources>
+    <string name="app_name">Mera Bihar</string>
+    <string name="facebook_app_id">321998451690619</string>
+    <string name="fb_login_protocol_scheme">fb321998451690619</string>
+
+    <!--Custom Font Type imported,refer main->assets->font folder 321998451690619-->
+    <string name="ColonnaMT">ColonnaMT</string>
+    <string name="Leprosy">Leprosy</string>
+    <string name="BomBardment">bombardment_shadow</string>
+    <string name="mina">Mina_is_gone_3D</string>
+    <string name="Yeysk">Yeysk</string>
+    <string name="Maribel_Suit">Maribel_Suit</string>
+    <string name="arial">arial</string>
+    <string name="Mistral">Mistral</string>
+
+    <string name="powered_by_zingo">Powered By Zingo</string>
+    <string name="terms">I agree to the <u> Privacy Policy</u>.</string>
+    <string name="copyright_lucida">&#9400; Lucida Hospitality Pvt Ltd</string>
+    <string name="version_name">1.0</string>
+
+    <string name="interest">What do you want to do? \n Choose your interest.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Zingo Hotels</string>
+
+    <string name="bhagalpur">http://bstdc.bih.nic.in/images/bhagalpur_map.jpg</string>
+    <string name="darbhanga">http://bstdc.bih.nic.in/images/darbhanga_map.jpg</string>
+    <string name="gaya">http://bstdc.bih.nic.in/images/gaya_map.jpg</string>
+    <string name="muzaffarpur">http://bstdc.bih.nic.in/images/muzaffarpur_map.jpg</string>
+    <string name="nalanda">http://bstdc.bih.nic.in/images/nalanda_map.jpg</string>
+    <string name="patna">http://bstdc.bih.nic.in/images/patna_map.jpg</string>
+    <string name="sitamarhi">http://bstdc.bih.nic.in/images/sitamarhi_map.jpg</string>
+    <string name="vaishali">http://bstdc.bih.nic.in/images/vaishali_map.jpg</string>
+    <string name="west_champaran">http://bstdc.bih.nic.in/images/west_champaran_map.jpg</string>
+    <string name="welcome_desc">Bihar is a state in East India, bordering Nepal. It is divided by the River Ganges, which floods its fertile plains. Important Buddhist pilgrimage sites include the Bodhi Tree in Bodhgaya\'s Mahabodhi Temple, under which the Buddha allegedly meditated. In the state capital Patna, Mahavir Mandir temple is revered by Hindus, while Sikhs worship at the domed, riverside Gurdwara of Takht Sri Harmandir Sahib Ji.</string>
+    <string name="welcome_descr">Every Year, over 6 Million Tourists land in Bihar to visit the remains of Ancient Nalanda University, the abode of Peace Bodhgaya, the mighty stupas of Vaishali, the misty mountains of Rajgir and other historic monuments dating back to 350 BC, scattered throughout the state.Here, you can trace the origin of World\'s two large religions and the origin of World's oldest democracy.Here you cannot afford to miss spotting Tiger Cubs at Valmiki Tiger Reserve, taking a Ropeway ride to Hills in Rajgir or an enchanting Ganga Cruise in Patna.</string>
+
+    <string name="file_provider_authority" translatable="false">app.zingo.merabihar.fileprovider</string>
+
+    <array name="bihar_tourist_map">
+        <item>@drawable/bhagalpur_map</item>
+        <item>@drawable/darbhanga_map</item>
+        <item>@drawable/gaya_map</item>
+        <item>@drawable/muzaffarpur_map</item>
+        <item>@drawable/nalanda_map</item>
+        <item>@drawable/patna_map</item>
+        <item>@drawable/sitamarhi_map</item>
+        <item>@drawable/vaishali_map</item>
+        <item>@drawable/west_champaran_map</item>
+    </array>
+
+
+    <array name="navbar_items">
+
+        <item>About Bihar</item>
+        <item>Categories</item>
+        <item>Blogs</item>
+        <!--<item>Interests</item>-->
+        <item>Terms &amp; Privacy Policy</item>
+        <!-- <item>Website</item>-->
+    </array>
+    <array name="navnar_item_images">
+        <item>@drawable/home_icon_menu</item>
+        <item>@drawable/world_icon_menu</item>
+        <!-- <item>@drawable/world_icon_menu</item>
+        <item>@drawable/tourism_icon_menu</item>
+        <item>@drawable/hotel_icon_menu</item>
+        <item>@drawable/online_icon_menu</item>
+        <item>@drawable/map_icon_menu</item>-->
+        <item>@drawable/blog_icon_menu</item>
+        <!--<item>@drawable/tags</item>-->
+        <item>@drawable/shield</item>
+        <!--<item>@drawable/www</item>-->
+    </array>
+
+    <array name="bihar_title">
+        <!--<item>Home</item>-->
+        <item>WELCOME TO</item>
+        <item>PEACEFUL</item>
+        <item>PIOUS</item>
+        <item>CREATIVE</item>
+        <item>ENLIGHTENED</item>
+        <item>TASTEFUL</item>
+    </array>
+    <array name="bihar_desc">
+        <!--<item>Home</item>-->
+        <item>BIHAR STATE TOURISM DEVELOPMENT CORPORATION LTD.</item>
+        <item>THE LAND OF BUDDHA</item>
+        <item>THE CHHATH POOJA DESTINATION</item>
+        <item>THE INCREDIBLE MADHUBANI PAINTING</item>
+        <item>THE OLDEST CENTER OF EDUCATION,NALANDA UNIVERSITY</item>
+        <item>THE FAMOUS LITTI &amp; CHOKHA</item>
+    </array>
+    <array name="bihar_images">
+        <item>@drawable/welcome_bihar</item>
+        <item>@drawable/peaceful_bihar</item>
+        <item>@drawable/pious_bihar</item>
+        <item>@drawable/creative_bihar</item>
+        <item>@drawable/enlighten_bihar</item>
+        <item>@drawable/taste_bihar</item>
+    </array>
+
+    <string name="about_bihar_para_one">Bihar\'s antiquity is evident from its name, which is derived from the ancient word
+                                    "VIHARA" (monastery). It is indeed a land of monasteries. Hindu, Buddhist, Jain,
+                                    Muslim and Sikh shrines abound in this ancient land where India\'s first major empires
+                                    rose and fell. Where the ruins of the worlds' earliest university slumbers in the
+                                    void of time. The passage of Ganga, flowing wide and deep enrich the plains of Bihar
+                                    before distributing in Bengal's deltoid zone.</string>
+
+    <string name="about_bihar_para_two">
+                                    Among all Indian states, Bihar is the one most intimately linked to the Buddha’s
+                                    life, resulting in a trail of pilgrimages which have come to be known as the Buddhist
+                                    circuit. The Buddhist trail begins at the capital city, Patna, where a noteworthy
+                                    museum contains a collection of Hindu and Buddhist sculptures as well as a terracotta
+                                    urn said to contain the ashes of Lord Buddha.</string>
+    <string name="about_bihar_para_three">
+                                    The Khuda Baksh Oriental Library has rare Muslim manuscripts including some from
+                                    the University of Cordoba in Spain. 40 km away, Vaishali, was the site for the second
+                                    Buddhist Council is the presence of ruins testify. 90 km south of Patna is Nalanda
+                                    which translates as the place that confers the lotus’ (of spiritual knowledge).
+                                    A monastic university flourished here from the 5th to the 11th century. It is said
+                                    to have contained nine million books, with 2,000 teachers to impart knowledge to
+                                    10,000 students who came from all over the Buddhist world. Lord Buddha himself taught
+                                    here and Hieun Tsang, the 7th century Chinese traveler, was a student. Ongoing excavations
+                                    have uncovered temples, monasteries and lecture halls. Rajgir, ‘the royal palace’,
+                                    12 km south, was the venue for the first Buddhist Council.</string>
+    <string name="about_bihar_para_four">
+                                    The Buddha spent five years at Rajgir after having attained enlightenment, and many
+                                    of the remains at Rajgir commemorate various incidents related to life of Buddha,
+                                    the hill of Gridhrakuta being perhaps the most important, as this is where the Buddha
+                                    delivered most of his sermons. Bodhgaya is the spot where Lord Buddha attained enlightenment,
+                                    with the Mahabodhi Temple marking the precise location.
+                                    </string>
+    <string name="about_bihar_para_five">
+                                    This landlocked state of Bihar is surrounded by Nepal, Bengal, Orissa, Madhya Pradesh,
+                                    Uttar Pradesh and comprises four cultural regions-Bhojpur, Mithila and Magadha and
+                                    Chotanagpur. Rivers Kosi and Gandak from the north and Sone from the south join
+                                    the Ganga. In the fertile plains, rice, sugarcane, oilseeds, gram, maize, jute,
+                                    barley and wheat are cultivated.
+                                    </string>
+
+    <string name="about_activity"> Bodhgaya is one of the most important and sacred Buddhist pilgrimage center in the
+                                            world. It was here under a banyan tree, the Bodhi Tree, Gautama attained supreme
+                                            knowledge to become Buddha,the Enlightened One. Born; in the foothills of the Himalayas
+                                            as a Sakya prince of Kapilvastu (now in Nepal), most of the major events of his
+                                            life, like enlightenment and last sermon, happened in Bihar. Buddhism as a religion
+                                            was really born in Bihar and evolved here through his preaching and the example
+                                            of his lifestyle of great simplicity, renunciation and empathy for everything living.
+                                            Significantly, the state\'s name of \'Bihar\' originated from \'Vihara\' meaning monasteries
+                                            which abounded in Bihar. Several centuries after Buddha\'s passing away, the Maurya
+                                            Emperor Ashoka (234-198 BC) contributed tremendously towards the revival, consolidation
+                                            and spread of the original religion. It is the monasteries, Ashoka built for the
+                                            Buddhist monks and the pillars known as Ashokan Pillars erected to commemorate innumerable
+                                            historical sites associated with the Buddha's life, mostly intact to this day, that
+                                            helped scholars and pilgrims alike to trace the life events and preaching of a truly
+                                            extraordinary man. There is a magnificent Mahabodhi temple and the Tree from the
+                                            original sapling still stands in the temple premises. The temple is an architectural
+                                            amalgamation of many centuries, cultures and heritages. While its architecture has
+                                            a distinct stamp of the Gupta era, it has later ages inscriptions describing visits
+                                            of pilgrims from Sri Lanka, Myanmar and China between 7th and 10th century AD. It
+                                            is perhaps still the same temple Hieuen Tsang visited in 7th century.</string>
+
+
+    <string name="term_policy">MERA BIHAR is committed to respecting and protecting the privacy of others. We pledge to guard your personal information in accordance with our privacy policy and respect the confidentiality of all visitor or subscriber data submitted to Mera Bihar Mobile Application.\n\n
+Sharing of Information MERA BIHAR will not disclose or share any information pertaining to sub-merchants to any other organization at any time unless the sub-merchant authorizes it.\n\n
+We share the personal information of customers like name, company name, address, telephone no, E-mail address only for our records purpose which is used later in the processing of the order, communicating with customers.\n\n
+Procurement of Information: We are committed to procure only the specific information from our customers &amp; Sub merchants. The Sub-Merchants may collect the personal information from their customers through the purchases that are made online through its site.\n\n
+The information we acquire by the customers &amp; Sub-Merchant is necessary to maintain the quality of services more efficiently.\n\n
+Security Measures: MERA BIHAR is highly concerned with the security measures as to maintain the data privacy &amp; confidentiality.\n\n
+All the personal information of a user is sent to our web server by using Secure Socket Layers (SSL) protocol, which encrypts all the information including your credit card information, before sending it to the Payment Gateway. This prevents the misuse of information from the unauthorized hands.\n\n
+Third Party Exposure: In online transaction, some important information will also be shared with the third parties as Credit card processors, concerned banks etc.\n\n
+MERA BIHAR is not responsible in any circumstances for any third party, which receives information of any customer by any unauthorized way.\n\n
+Recommendations &amp; Updations: Any suggestions &amp; updations regarding the privacy policy or any other questions &amp; views to update the policy will be appreciated in this case you may contact us.\n\n
+We respect the intention and purpose for which our clients submit any personal data. In accordance with our policy, we will not use any information for any means other than stated or implied (i.e., customer care, technical support, account management, etc.).\n\n
+</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_search">Search</string>
+    <string name="title_post">Story</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_account">Account</string>
+    <string name="title_activity_home_landing_bottom_screen">HomeLandingBottomScreen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Material Camera Stuff -->
+    <string name="mcam_defaultDuration">00:00</string>
+    <string name="mcam_permissions_needed">Permissions Needed</string>
+    <string name="mcam_video_perm_warning">Permission to access your microphone and camera is needed, the camera will now close.</string>
+    <string name="mcam_retry">RETRY</string>
+    <string name="mcam_use_video">USE VIDEO</string>
+    <string name="mcam_use_stillshot">USE STILLSHOT</string>
+    <string name="mcam_portrait">Portrait</string>
+    <string name="mcam_portrait_warning">It\'s recommended that you record in landscape. Record in portrait?</string>
+    <string name="mcam_yes">Yes</string>
+    <string name="mcam_error">Error</string>
+    <string name="mcam_video_capture_unsupported">Your device does not support video capture.</string>
+    <string name="mcam_no_audio_access">You haven\'t given access to your microphone; no audio will be recorded.</string>
+    <string name="mcam_file_size_limit_reached">You\'ve reached the maximum file size!</string>
+    <string name="mcam_image_preview_error_title">Image preview error</string>
+    <string name="mcam_image_preview_error_message">Could not decode bitmap</string>
+
+    <!-- Easy Video Player Stuff -->
+    <string name="evp_submit">SUBMIT</string>
+    <string name="evp_retry">RETRY</string>
+
+
+</resources>

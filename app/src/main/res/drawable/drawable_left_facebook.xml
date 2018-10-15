@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list>
+    <item
+        n1:drawable="@drawable/ic_facebook"
+        n1:left="@dimen/socialMediaButtonPadding"
+        n1:top="@dimen/socialMediaButtonPadding"
+        n1:bottom="@dimen/socialMediaButtonPadding"
+        xmlns:n1="http://schemas.android.com/apk/res/android" />
+</layer-list>

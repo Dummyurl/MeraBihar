@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/rootView"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <!-- <include layout="@layout/toolbar" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/appBarLayout"
+        android:background="#FFFFFF"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@id/toolbar"
+            android:background="@drawable/shape_bottom_stroke_grey_light"
+            android:fitsSystemWindows="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:actionBarSize"
+            app:contentInsetStartWithNavigation="0.0dip"
+            app:layout_scrollFlags="enterAlways|scroll|snap"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/search_layout"
+                android:orientation="horizontal">
+
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:clickable="false"
+                   android:saveEnabled="false"
+                   app:srcCompat="@drawable/ic_search_black_24dp"
+                   ></ImageView>
+
+                <EditText android:id="@+id/search_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:hint="Search.."
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:background="@android:color/transparent"
+                    android:inputType="textVisiblePassword"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:background="#FFFFFFFF"
+        android:layout_width="fill_parent"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/appBar"
+        android:layout_alignParentBottom="true">
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:padding="2dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/category_layout">
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="0.0sp"
+                android:focusable="false"
+                android:background="#FFFFFF"
+                android:id="@+id/image_list"
+                />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>
+

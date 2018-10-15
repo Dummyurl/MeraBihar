@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#540CFA</color>
+    <color name="colorPrimaryDark">#540CFA</color>
+    <color name="colorAccent">#540CFA</color>
+
+    <color name="transparentBlack">#5e000000</color>
+    <color name="default_textcolor">#ffffff</color>
+    <color name="text_blue">#021A5D</color>
+    <color name="text_grey">#424D58</color>
+
+    <color name="textPrimary">#ff1b272f</color>
+    <color name="white">@android:color/white</color>
+    <color name="grey_charcoal">#ff39444f</color>
+    <color name="blue_express_delivery">#ff0faef2</color>
+    <color name="urban_grey">#ffeff2f4</color>
+    <color name="google">#ffea4335</color>
+    <color name="googlePressed">#ffcf3b2f</color>
+    <color name="facebook">#ff3b5998</color>
+    <color name="facebookPressed">#ff354f87</color>
+    <color name="tealish_blue_pressed">#ff000fff</color>
+    <color name="blue_cloudy">#ffbbcdd6</color>
+    <color name="tealish_blue">#f11111ff</color>
+    <color name="bgBottomNavigation">#001D43</color>
+
+    <color name="mcam_color_light">#FAFAFA</color>
+    <color name="mcam_color_dark">#424242</color>
+
+    <color name="colordarkRed">#cc0000</color>
+
+
+</resources>

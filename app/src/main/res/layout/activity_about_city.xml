@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/about_bihar_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/about_bihar_viewpage"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:id="@+id/blog_desc">
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/about_bihar_para_one"/>
+
+
+            <fragment
+                android:layout_below="@+id/id_video_play_text"
+                android:id="@+id/youtube_player_fragment_top"
+                android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/about_bihar_para_two"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/about_bihar_para_three"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/about_bihar_para_four"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginTop="25dp"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/about_bihar_para_five"/>
+
+            <!--<fragment
+                android:layout_below="@+id/id_video_play_text"
+                android:id="@+id/youtube_player_fragment"
+                android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"/>-->
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout
+    n1:id="@+id/appBar"
+    n2:layout_constraintLeft_toLeftOf="parent"
+    n2:layout_constraintRight_toRightOf="parent"
+    n2:layout_constraintTop_toTopOf="parent"
+    style="@style/appBarLayout"
+    n1:background="#FFFFFF"
+    xmlns:n1="http://schemas.android.com/apk/res/android" xmlns:n2="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        n1:id="@id/toolbar"
+        n1:background="@drawable/shape_bottom_stroke_grey_light"
+        n1:fitsSystemWindows="true"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:minHeight="?android:actionBarSize"
+        n2:contentInsetStartWithNavigation="0.0dip"
+        n2:layout_scrollFlags="enterAlways|scroll|snap"
+        n2:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+</android.support.design.widget.AppBarLayout>

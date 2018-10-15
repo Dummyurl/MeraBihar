@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="10.0dip"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/text_blue"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="Title"/>
+            
+
+
+            <EditText
+                android:id="@+id/blog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:padding="3dp"
+                android:hint="Title of Story..."
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:keepScreenOn="true"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:lines="2"
+                android:background="@drawable/spinner_background"
+                android:maxLines="2"
+                />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="10.0dip"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/text_blue"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="Story"/>
+
+            <EditText
+                android:id="@+id/long_desc_blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:padding="3dp"
+                android:hint="Write your story..."
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:keepScreenOn="true"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:lines="15"
+                android:background="@drawable/spinner_background"
+
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tag_layout"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="10.0dip"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/text_blue"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="Please Select One Category"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/sub_list"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/spinner_background">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="10.0dip"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/text_blue"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="Tags"/>
+
+            <EditText
+                android:id="@+id/tags_blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:padding="3dp"
+                android:hint="#Tags"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:keepScreenOn="true"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:lines="5"
+                android:background="@drawable/spinner_background"
+
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:id="@+id/image_layout"
+            android:layout_margin="15dp"
+            android:orientation="horizontal"
+            android:background="@drawable/dotted_rect">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/upload_images"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="10.0dip"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/text_blue"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="Upload Pictures"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/blog_images">
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/create_blogs"
+            android:layout_gravity="bottom"
+            android:ems="15"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="12dp"
+            android:background="@color/colorPrimary"
+            android:text="Post your Story"
+            android:textColor="#fff"/>
+
+    </LinearLayout>
+</ScrollView>

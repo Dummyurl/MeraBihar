@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true"
+
+    tools:context=".UI.ActivityScreen.LandingScreen.SplashScreenActivty">
+
+    <app.zingo.merabihar.CustomViews.CustomFontTextView
+        android:id="@+id/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:enabled="false"
+        android:layout_margin="15dp"
+        app:fontName="arial"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textStyle="normal"
+        >
+    </app.zingo.merabihar.CustomViews.CustomFontTextView>
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/bihar_splash"
+        android:src="@drawable/app_logo"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Version 1.1"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:id="@+id/version_name" />
+
+
+
+
+        <app.zingo.merabihar.CustomViews.CustomFontTextView
+            android:id="@+id/powered_by"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"
+            android:text="@string/powered_by_zingo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22dp"
+            android:layout_above="@+id/copyrights_by"
+            android:textStyle="normal"
+            app:fontName="Mistral">
+
+        </app.zingo.merabihar.CustomViews.CustomFontTextView>
+
+
+        <app.zingo.merabihar.CustomViews.CustomFontTextView
+            android:id="@+id/copyrights_by"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"
+            android:text="@string/copyright_lucida"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            app:fontName="arial">
+
+        </app.zingo.merabihar.CustomViews.CustomFontTextView>
+
+
+    </RelativeLayout>
+
+</FrameLayout>
