@@ -32,13 +32,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".UI.ActivityScreen.LandingScreen.SplashScreenActivty"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".UI.ActivityScreen.LandingScreen.LandingScreenActivity"
             android:label=""
@@ -122,8 +116,23 @@
         <activity
             android:name=".UI.ActivityScreen.LandingScreen.PickInterestsScreenForProfile"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".UI.ActivityScreen.SearchScreens.SearchActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UI.ActivityScreen.SearchScreens.SearchActivity" />
+        <activity
+            android:name=".UI.ActivityScreen.MainTabHostActivity.TabMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UI.ActivityScreen.MainTabHostActivity.TabHomeScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

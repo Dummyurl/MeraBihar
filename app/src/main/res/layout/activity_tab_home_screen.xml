@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.zingo.merabihar.UI.ActivityScreen.MainTabHostActivity.TabHomeScreen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/content_pager_city"
+                />
+
+            <ProgressBar
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:id="@+id/progressBar_content"
+                android:layout_centerInParent="true"/>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/content_based_category"
+            android:scrollbars="none"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="24dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/collection_show_layout"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Popular Collections"
+            android:textSize="20sp"
+            android:textColor="@color/text_blue"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/all_collections_contents"
+            android:scrollbars="none"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="24dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/experience_show_layout"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Popular Experiences"
+            android:textSize="20sp"
+            android:textColor="@color/text_blue"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/all_experience_contents"
+            android:scrollbars="none"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="24dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            />
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

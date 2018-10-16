@@ -28,15 +28,19 @@ import java.util.ArrayList;
 
 import app.zingo.merabihar.Adapter.ActivityInOtherAdapter;
 import app.zingo.merabihar.Adapter.BlogViewPagerAdapter;
+import app.zingo.merabihar.Adapter.ContentCityHomePager;
 import app.zingo.merabihar.Adapter.SubCategoryGridAdapter;
 import app.zingo.merabihar.Model.ActivityModel;
 import app.zingo.merabihar.Model.Blogs;
 import app.zingo.merabihar.Model.Category;
+import app.zingo.merabihar.Model.Contents;
 import app.zingo.merabihar.R;
+import app.zingo.merabihar.UI.ActivityScreen.MainTabHostActivity.TabHomeScreen;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
 import app.zingo.merabihar.WebApi.ActivityApi;
 import app.zingo.merabihar.WebApi.BlogApi;
+import app.zingo.merabihar.WebApi.ContentAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -127,13 +131,13 @@ public class CategoryDetailsScreen extends AppCompatActivity {
                 }
 
 
-                if(category.getSubCategoriesList()!=null&&category.getSubCategoriesList().size()!=0){
+                /*if(category.getSubCategoriesList()!=null&&category.getSubCategoriesList().size()!=0){
 
                     SubCategoryGridAdapter adapter = new SubCategoryGridAdapter(CategoryDetailsScreen.this,category.getSubCategoriesList());
                     mSubCategory.setAdapter(adapter);
-                }
-                getBlogs(category.getCategoriesId());
-                getActivities();
+                }*/
+
+                getContents(category.getCategoriesId());
             }else{
                 collapsingToolbarLayout.setTitle("Category Detail");
                 Picasso.with(CategoryDetailsScreen.this).load(category.getCategoriesImage()).placeholder(R.drawable.no_image).
@@ -171,6 +175,68 @@ public class CategoryDetailsScreen extends AppCompatActivity {
     }
 
     //GetActivities By Category Id
+    public void getContents(final int id)
+    {
+
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+                final ContentAPI categoryAPI = Util.getClient().create(ContentAPI.class);
+                Call<ArrayList<Contents>> getCat = categoryAPI.getContentsByCatId(id);
+                //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
+
+                getCat.enqueue(new Callback<ArrayList<Contents>>() {
+
+                    @Override
+                    public void onResponse(Call<ArrayList<Contents>> call, Response<ArrayList<Contents>> response) {
+
+
+                        if(response.code() == 200)
+                        {
+
+                            ArrayList<Contents> contentsList = response.body();
+
+                            if(contentsList != null && contentsList.size() != 0)
+                            {
+
+                                mActivityLayout.setVisibility(View.VISIBLE);
+
+                                ContentCityHomePager adapter = new ContentCityHomePager(CategoryDetailsScreen.this,contentsList);
+                                mActivityView.setAdapter(adapter);
+
+
+                            }
+                            else
+                            {
+
+                                mActivityLayout.setVisibility(View.GONE);
+                            }
+                        }else{
+                            mActivityLayout.setVisibility(View.GONE);
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Contents>> call, Throwable t) {
+
+
+                        mActivityLayout.setVisibility(View.GONE);
+
+                        Toast.makeText(CategoryDetailsScreen.this,t.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+                //System.out.println(TAG+" thread started");
+
+            }
+
+        });
+
+    }
     public void getActivities()
     {
         /*final ProgressDialog dialog = new ProgressDialog(CategoryDetailsScreen.this);
