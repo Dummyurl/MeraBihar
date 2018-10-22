@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -15,20 +16,27 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import app.zingo.merabihar.Adapter.CategoryContentRecyclerAdapter;
+import app.zingo.merabihar.Adapter.ContentCategoryRecyclerAdapter;
 import app.zingo.merabihar.Adapter.ContentCityHomePager;
 import app.zingo.merabihar.Adapter.ContentCollectionAdapter;
 import app.zingo.merabihar.Adapter.ExperienceContentAdapter;
+import app.zingo.merabihar.Adapter.ProfileFollowingAdapter;
 import app.zingo.merabihar.Adapter.ProfileListAdapter;
 import app.zingo.merabihar.Adapter.ViewPagerAdapter;
 import app.zingo.merabihar.Model.Category;
+import app.zingo.merabihar.Model.CategoryAndContentList;
 import app.zingo.merabihar.Model.Contents;
 import app.zingo.merabihar.Model.SubCategories;
+import app.zingo.merabihar.Model.UserProfile;
 import app.zingo.merabihar.R;
 import app.zingo.merabihar.UI.ActivityScreen.LandingScreen.LandingScreenActivity;
+import app.zingo.merabihar.Util.PreferenceHandler;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
 import app.zingo.merabihar.WebApi.CategoryApi;
 import app.zingo.merabihar.WebApi.ContentAPI;
+import app.zingo.merabihar.WebApi.InterestProfileAPI;
+import app.zingo.merabihar.WebApi.ProfileFollowAPI;
 import app.zingo.merabihar.WebApi.SubCategoryAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,11 +46,12 @@ public class TabHomeScreen extends AppCompatActivity {
 
     ViewPager mContentsCityPager;
     ProgressBar mContentProgress;
-    RecyclerView mCategoryContents,mCollection,mExperience;
-    LinearLayout mCollectionShow,mExperienceShow;
+    RecyclerView mCategoryContents,mCollection,mExperience,mFollowerContent,mFollowingContent,mInterestContent;
+    LinearLayout mCollectionShow,mExperienceShow,mFollowerContentLayout;
 
     ArrayList<Contents> contentsList;
     ArrayList<Category> categoryList;
+    ArrayList<CategoryAndContentList> categoryAndContentList;
     ArrayList<SubCategories> subcategoryList;
 
     @Override
@@ -56,6 +65,7 @@ public class TabHomeScreen extends AppCompatActivity {
             mContentProgress = (ProgressBar) findViewById(R.id.progressBar_content);
             mCollectionShow = (LinearLayout) findViewById(R.id.collection_show_layout);
             mExperienceShow = (LinearLayout) findViewById(R.id.experience_show_layout);
+            mFollowerContentLayout = (LinearLayout) findViewById(R.id.follower_content_show_layout);
             mCategoryContents = (RecyclerView) findViewById(R.id.content_based_category);
             mCategoryContents.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
             mCategoryContents.setNestedScrollingEnabled(false);
@@ -68,11 +78,34 @@ public class TabHomeScreen extends AppCompatActivity {
             mExperience.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             mExperience.setNestedScrollingEnabled(false);
 
+            mFollowerContent = (RecyclerView) findViewById(R.id.all_followers_contents);
+            mFollowerContent.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            mFollowerContent.setNestedScrollingEnabled(false);
+
+            mFollowingContent = (RecyclerView) findViewById(R.id.all_following_contents);
+            mFollowingContent.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            mFollowingContent.setNestedScrollingEnabled(false);
+
+            mInterestContent = (RecyclerView) findViewById(R.id.all_interest_contents);
+            mInterestContent.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            mInterestContent.setNestedScrollingEnabled(false);
+
 
             mContentsCityPager.setClipToPadding(false);
             mContentsCityPager.setPadding(30,10,30,0);
             mContentsCityPager.setPageMargin(10);
 
+            getCategoryAndContent();
+            //int userId = PreferenceHandler.getInstance(TabHomeScreen.this).getUserId();
+            int userId = 49;
+
+            if(userId!=0){
+                getFollowingByProfileId(userId);
+                getFollowerByProfileId(userId);
+                getContentsofInterest(userId);
+            }else{
+                mFollowerContentLayout.setVisibility(View.GONE);
+            }
 
             getContents();
             getCategories();
@@ -84,6 +117,166 @@ public class TabHomeScreen extends AppCompatActivity {
         }
 
     }
+
+
+    private void getFollowingByProfileId(final int id){
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+
+                ProfileFollowAPI apiService =
+                        Util.getClient().create(ProfileFollowAPI.class);
+
+                Call<ArrayList<UserProfile>> call = apiService.getFollowersContentByProfileId(id);
+
+                call.enqueue(new Callback<ArrayList<UserProfile>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<UserProfile>> call, Response<ArrayList<UserProfile>> response) {
+//                List<RouteDTO.Routes> list = new ArrayList<RouteDTO.Routes>();
+                        int statusCode = response.code();
+
+
+
+                        if(statusCode == 200 || statusCode == 204)
+                        {
+
+                            ArrayList<UserProfile> responseProfile = response.body();
+                            ArrayList<Contents> followingContents = new ArrayList<>();
+
+                            if(responseProfile != null && responseProfile.size()!=0 )
+                            {
+
+                                for (UserProfile profile:responseProfile) {
+
+                                    if(profile.getContents()!=null&&profile.getContents().size()!=0){
+
+                                        for (Contents content:profile.getContents()) {
+
+                                            followingContents.add(content);
+
+                                        }
+
+
+                                    }
+
+                                }
+
+                                if(followingContents!=null&& followingContents.size()!=0){
+
+                                    ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,followingContents);
+                                    mFollowerContent.setAdapter(adapter);
+                                }
+
+
+                            }
+                            else
+                            {
+
+
+                            }
+                        }
+                        else
+                        {
+
+
+                        }
+//                callGetStartEnd();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<UserProfile>> call, Throwable t) {
+                        // Log error here since request failed
+
+
+
+                        Log.e("TAG", t.toString());
+                    }
+                });
+            }
+        });
+    }
+
+    private void getFollowerByProfileId(final int id){
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+
+                ProfileFollowAPI apiService =
+                        Util.getClient().create(ProfileFollowAPI.class);
+
+                Call<ArrayList<UserProfile>> call = apiService.getFollowingContentByProfileId(id);
+
+                call.enqueue(new Callback<ArrayList<UserProfile>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<UserProfile>> call, Response<ArrayList<UserProfile>> response) {
+//                List<RouteDTO.Routes> list = new ArrayList<RouteDTO.Routes>();
+                        int statusCode = response.code();
+
+
+
+                        if(statusCode == 200 || statusCode == 204)
+                        {
+
+                            ArrayList<UserProfile> responseProfile = response.body();
+                            ArrayList<Contents> followingContents = new ArrayList<>();
+
+                            if(responseProfile != null && responseProfile.size()!=0 )
+                            {
+
+                                for (UserProfile profile:responseProfile) {
+
+                                    if(profile.getContents()!=null&&profile.getContents().size()!=0){
+
+                                        for (Contents content:profile.getContents()) {
+
+                                            followingContents.add(content);
+
+                                        }
+
+
+                                    }
+
+                                }
+
+                                if(followingContents!=null&& followingContents.size()!=0){
+
+                                    ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,followingContents);
+                                    mFollowingContent.setAdapter(adapter);
+                                }
+
+
+                            }
+                            else
+                            {
+
+
+                            }
+                        }
+                        else
+                        {
+
+
+                        }
+//                callGetStartEnd();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<UserProfile>> call, Throwable t) {
+                        // Log error here since request failed
+
+
+
+                        Log.e("TAG", t.toString());
+                    }
+                });
+            }
+        });
+    }
+
 
     public void getContents()
     {
@@ -147,6 +340,67 @@ public class TabHomeScreen extends AppCompatActivity {
 
     }
 
+    public void getContentsofInterest(final int id)
+    {
+
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+                final InterestProfileAPI categoryAPI = Util.getClient().create(InterestProfileAPI.class);
+                Call<ArrayList<Contents>> getCat = categoryAPI.getContentofInterestByProfileId(id);
+                //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
+
+                getCat.enqueue(new Callback<ArrayList<Contents>>() {
+
+                    @Override
+                    public void onResponse(Call<ArrayList<Contents>> call, Response<ArrayList<Contents>> response) {
+
+
+
+                        if(response.code() == 200)
+                        {
+
+                            ArrayList<Contents> contentsInterestList = response.body();
+
+                            if(contentsInterestList != null && contentsInterestList.size() != 0)
+                            {
+
+
+                                ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,contentsInterestList);
+                                mInterestContent.setAdapter(adapter);
+
+
+                            }
+                            else
+                            {
+
+
+                            }
+                        }else{
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Contents>> call, Throwable t) {
+
+
+
+                        Toast.makeText(TabHomeScreen.this,t.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+                //System.out.println(TAG+" thread started");
+
+            }
+
+        });
+
+    }
+
     public void getCategories()
     {
 
@@ -174,8 +428,8 @@ public class TabHomeScreen extends AppCompatActivity {
                             if(categoryList != null && categoryList.size() != 0)
                             {
 
-                                CategoryContentRecyclerAdapter adapter = new CategoryContentRecyclerAdapter(TabHomeScreen.this,categoryList);
-                                mCategoryContents.setAdapter(adapter);
+                               /* CategoryContentRecyclerAdapter adapter = new CategoryContentRecyclerAdapter(TabHomeScreen.this,categoryList);
+                                mCategoryContents.setAdapter(adapter);*/
 
                                 mCollectionShow.setVisibility(View.VISIBLE);
 
@@ -188,11 +442,11 @@ public class TabHomeScreen extends AppCompatActivity {
                             else
                             {
 
-                                mCategoryContents.setVisibility(View.GONE);
+                             /*   mCategoryContents.setVisibility(View.GONE);*/
                                 mCollectionShow.setVisibility(View.GONE);
                             }
                         }else{
-                            mCategoryContents.setVisibility(View.GONE);
+                         /*   mCategoryContents.setVisibility(View.GONE);*/
                             mCollectionShow.setVisibility(View.GONE);
                         }
                     }
@@ -200,8 +454,72 @@ public class TabHomeScreen extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<ArrayList<Category>> call, Throwable t) {
 
-                        mCategoryContents.setVisibility(View.GONE);
+                     /*   mCategoryContents.setVisibility(View.GONE);*/
                         mCollectionShow.setVisibility(View.GONE);
+
+                        Toast.makeText(TabHomeScreen.this,t.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+                //System.out.println(TAG+" thread started");
+
+            }
+
+        });
+
+    }
+
+    public void getCategoryAndContent()
+    {
+
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+                final CategoryApi categoryAPI = Util.getClient().create(CategoryApi.class);
+                Call<ArrayList<CategoryAndContentList>> getCat = categoryAPI.getContentAndCategoryByCityId(2);
+                //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
+
+                getCat.enqueue(new Callback<ArrayList<CategoryAndContentList>>() {
+
+                    @Override
+                    public void onResponse(Call<ArrayList<CategoryAndContentList>> call, Response<ArrayList<CategoryAndContentList>> response) {
+
+                        mContentProgress.setVisibility(View.GONE);
+
+                        if(response.code() == 200)
+                        {
+
+                            categoryAndContentList = response.body();
+
+                            if(categoryAndContentList != null && categoryAndContentList.size() != 0)
+                            {
+
+                                CategoryContentRecyclerAdapter adapter = new CategoryContentRecyclerAdapter(TabHomeScreen.this,categoryAndContentList);
+                                mCategoryContents.setAdapter(adapter);
+
+
+
+
+
+                            }
+                            else
+                            {
+
+                                mCategoryContents.setVisibility(View.GONE);
+
+                            }
+                        }else{
+                            mCategoryContents.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<CategoryAndContentList>> call, Throwable t) {
+
+                        mCategoryContents.setVisibility(View.GONE);
 
                         Toast.makeText(TabHomeScreen.this,t.getMessage(),Toast.LENGTH_SHORT).show();
                     }

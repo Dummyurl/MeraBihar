@@ -26,7 +26,7 @@ public class SearchActivity extends AppCompatActivity implements TabLayout.OnTab
             setTitle("Search");
 
             tabLayout = (TabLayout) findViewById(R.id.following_tabs);
-            tabLayout.setTabGravity(TabLayout.MODE_SCROLLABLE);
+            tabLayout.setTabGravity(TabLayout.MODE_FIXED);
             viewPager = (ViewPager) findViewById(R.id.following_view_pager);
 
             SearchPageAdapter adapter = new SearchPageAdapter(getSupportFragmentManager());

@@ -93,8 +93,9 @@ public class PeopleSearchFragment extends Fragment {
                 getOtherProfiles(profileId);
 
             }else{
-
-
+                mProgressBar.setVisibility(View.VISIBLE);
+                userProfile = new ArrayList<>();
+                getProfileByUserRoleId();
             }
 
             mSearchText.addTextChangedListener(new TextWatcher() {
@@ -260,6 +261,68 @@ public class PeopleSearchFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<FollowerNonFollowers> call, Throwable t) {
+                        // Log error here since request failed
+
+                        mProgressBar.setVisibility(View.GONE);
+
+                        Log.e("TAG", t.toString());
+                    }
+                });
+            }
+        });
+    }
+
+    private void getProfileByUserRoleId(){
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+
+                ProfileAPI apiService =
+                        Util.getClient().create(ProfileAPI.class);
+
+                Call<ArrayList<UserProfile>> call = apiService.getUserByUserRoleId(1);
+
+                call.enqueue(new Callback<ArrayList<UserProfile>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<UserProfile>> call, Response<ArrayList<UserProfile>> response) {
+//                List<RouteDTO.Routes> list = new ArrayList<RouteDTO.Routes>();
+                        int statusCode = response.code();
+
+                        mProgressBar.setVisibility(View.GONE);
+
+                        if(statusCode == 200 || statusCode == 204)
+                        {
+                            ArrayList<UserProfile> userProfiles = response.body();
+                            if (userProfiles!=null&&userProfiles.size()!=0){
+
+
+
+                            for (UserProfile usr:userProfiles) {
+
+                                userProfile.add(usr);
+
+                            }
+                            ProfileSearchAdapter adapter = new ProfileSearchAdapter(getActivity(),userProfile);
+                            recyclerViewFolloers.setAdapter(adapter);
+
+                        }else{
+
+                            mOn.setVisibility(View.GONE);
+
+                        }
+                        }
+                        else
+                        {
+
+                            Toast.makeText(getActivity(),response.message(),Toast.LENGTH_SHORT).show();
+                        }
+//                callGetStartEnd();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<UserProfile>> call, Throwable t) {
                         // Log error here since request failed
 
                         mProgressBar.setVisibility(View.GONE);

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.lang.reflect.Member;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
@@ -42,6 +43,9 @@ public class UserProfile  implements Serializable {
     @SerializedName("ProfilePhoto")
     private String ProfilePhoto;
 
+    @SerializedName("blogList")
+    private ArrayList<Blogs> blogList;
+
     @SerializedName("AuthType")
     private String AuthType;
 
@@ -54,6 +58,23 @@ public class UserProfile  implements Serializable {
     @SerializedName("Status")
     private String Status;
 
+    @SerializedName("Views")
+    private String Views;
+
+    @SerializedName("WatchTime")
+    private String WatchTime;
+
+    @SerializedName("fitnessTracker")
+    private String fitnessTracker;
+
+    @SerializedName("contents")
+    private ArrayList<Contents> contents;
+
+    @SerializedName("comment")
+    private ArrayList<Comments> comment;
+
+    @SerializedName("ReferralCodeUsed")
+    private String ReferralCodeUsed;
 
     public int getProfileId() {
         return ProfileId;
@@ -166,6 +187,63 @@ public class UserProfile  implements Serializable {
     public void setStatus(String status) {
         Status = status;
     }
+
+    public ArrayList<Blogs> getBlogList() {
+        return blogList;
+    }
+
+    public void setBlogList(ArrayList<Blogs> blogList) {
+        this.blogList = blogList;
+    }
+
+    public String getViews() {
+        return Views;
+    }
+
+    public void setViews(String views) {
+        Views = views;
+    }
+
+    public String getWatchTime() {
+        return WatchTime;
+    }
+
+    public void setWatchTime(String watchTime) {
+        WatchTime = watchTime;
+    }
+
+    public String getFitnessTracker() {
+        return fitnessTracker;
+    }
+
+    public void setFitnessTracker(String fitnessTracker) {
+        this.fitnessTracker = fitnessTracker;
+    }
+
+    public ArrayList<Contents> getContents() {
+        return contents;
+    }
+
+    public void setContents(ArrayList<Contents> contents) {
+        this.contents = contents;
+    }
+
+    public ArrayList<Comments> getComment() {
+        return comment;
+    }
+
+    public void setComment(ArrayList<Comments> comment) {
+        this.comment = comment;
+    }
+
+    public String getReferralCodeUsed() {
+        return ReferralCodeUsed;
+    }
+
+    public void setReferralCodeUsed(String referralCodeUsed) {
+        ReferralCodeUsed = referralCodeUsed;
+    }
+
 
     public static Comparator compareProfile = new Comparator() {
         @Override

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import app.zingo.merabihar.Adapter.InterestFollowAdapter;
+import app.zingo.merabihar.Adapter.InterestSearchAdapter;
 import app.zingo.merabihar.Adapter.ProfileSearchAdapter;
 import app.zingo.merabihar.Model.FollowerNonFollowers;
 import app.zingo.merabihar.Model.Interest;
@@ -74,10 +75,10 @@ public class InterestSearchFragment extends Fragment {
 
         try{
             View view = inflater.inflate(R.layout.fragment_interest_search, container, false);
-            recyclerViewFolloers = (RecyclerView) view.findViewById(R.id.people_following_list);
-            recyclerViewNonFolloers = (RecyclerView) view.findViewById(R.id.people_non_following_list);
-            recyclerProfile = (RecyclerView) view.findViewById(R.id.people_list);
-            mInterestScroll = (ScrollView) view.findViewById(R.id.scroll_profile);
+            recyclerViewFolloers = (RecyclerView) view.findViewById(R.id.interest_following_list);
+            recyclerViewNonFolloers = (RecyclerView) view.findViewById(R.id.interest_non_following_list);
+            recyclerProfile = (RecyclerView) view.findViewById(R.id.interest_list);
+            mInterestScroll = (ScrollView) view.findViewById(R.id.scroll_interest);
             mNon = (LinearLayout) view.findViewById(R.id.non_layout);
             mOn = (LinearLayout) view.findViewById(R.id.on_layout);
             mSearchText = (EditText) view.findViewById(R.id.search_editText);
@@ -90,12 +91,14 @@ public class InterestSearchFragment extends Fragment {
 
 
                 mProgressBar.setVisibility(View.VISIBLE);
-
+                getInterestByProfileId(profileId);
 
 
             }else{
 
-
+                mProgressBar.setVisibility(View.VISIBLE);
+                followings = new ArrayList<>();
+                getInterest();
             }
 
             mSearchText.addTextChangedListener(new TextWatcher() {
@@ -116,7 +119,7 @@ public class InterestSearchFragment extends Fragment {
                         recyclerProfile.setVisibility(View.GONE);
 
                     }else{
-                        //filterProfiles(charSequence.toString().toLowerCase());
+                        filterProfiles(charSequence.toString().toLowerCase());
 
                     }
 
@@ -139,33 +142,33 @@ public class InterestSearchFragment extends Fragment {
         }
     }
 
-  /*  private void filterProfiles(String s) {
+    private void filterProfiles(String s) {
 
-        ArrayList<UserProfile> filteredList = new ArrayList<>();
+        ArrayList<Interest> filteredList = new ArrayList<>();
         mInterestScroll.setVisibility(View.GONE);
         recyclerProfile.setVisibility(View.VISIBLE);
 
         try{
-            for(int i=0;i<userProfile.size();i++)
+            for(int i=0;i<categories.size();i++)
             {
 
                 String fullName = "";
 
 
-                if(userProfile.get(i).getFullName()!=null){
-                    fullName= userProfile.get(i).getFullName().toLowerCase();
+                if(categories.get(i).getInterestName()!=null){
+                    fullName= categories.get(i).getInterestName().toLowerCase();
                 }
 
                 if(fullName.contains(s))
                 {
-                    filteredList.add(userProfile.get(i));
+                    filteredList.add(categories.get(i));
                 }
 
 
 
             }
 
-            ProfileSearchAdapter adapter = new ProfileSearchAdapter(getActivity(),filteredList);
+            InterestSearchAdapter adapter = new InterestSearchAdapter(getActivity(),filteredList);
             recyclerProfile.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }catch (Exception e){
@@ -177,100 +180,9 @@ public class InterestSearchFragment extends Fragment {
 
 
 
-    }*/
-
-   /* private void getOtherProfiles(final int id){
-
-        new ThreadExecuter().execute(new Runnable() {
-            @Override
-            public void run() {
+    }
 
 
-                ProfileAPI apiService =
-                        Util.getClient().create(ProfileAPI.class);
-
-                Call<FollowerNonFollowers> call = apiService.getOtherProfiles(id);
-
-                call.enqueue(new Callback<FollowerNonFollowers>() {
-                    @Override
-                    public void onResponse(Call<FollowerNonFollowers> call, Response<FollowerNonFollowers> response) {
-//                List<RouteDTO.Routes> list = new ArrayList<RouteDTO.Routes>();
-                        int statusCode = response.code();
-
-                        mProgressBar.setVisibility(View.GONE);
-
-                        if(statusCode == 200 || statusCode == 204)
-                        {
-
-                            FollowerNonFollowers userProfiles = response.body();
-
-                            if(userProfiles!=null){
-
-
-                                ArrayList<UserProfile> folloers = new ArrayList<>();
-                                ArrayList<UserProfile> nonfolloers = new ArrayList<>();
-
-                                if (userProfiles.getFollowers()!=null&&userProfiles.getFollowers().size()!=0){
-
-
-                                    System.out.println("User 1Size "+userProfile.size());
-                                    folloers = userProfiles.getFollowers();
-                                    for (UserProfile usr:folloers) {
-
-                                        userProfile.add(usr);
-
-                                    }
-                                    ProfileSearchAdapter adapter = new ProfileSearchAdapter(getActivity(),folloers);
-                                    recyclerViewFolloers.setAdapter(adapter);
-
-                                }else{
-
-                                    mOn.setVisibility(View.GONE);
-
-                                }
-
-                                if (userProfiles.getNonFollowers()!=null&&userProfiles.getNonFollowers().size()!=0){
-
-                                    System.out.println("User 2Size "+userProfile.size());
-                                    nonfolloers = userProfiles.getNonFollowers();
-                                    for (UserProfile usr:nonfolloers) {
-
-                                        userProfile.add(usr);
-
-                                    }
-                                    ProfileSearchAdapter adapter = new ProfileSearchAdapter(getActivity(),nonfolloers);
-                                    recyclerViewNonFolloers.setAdapter(adapter);
-
-                                }else{
-
-                                    mNon.setVisibility(View.GONE);
-
-                                }
-
-
-                            }
-
-                        }
-                        else
-                        {
-
-                            Toast.makeText(getActivity(),response.message(),Toast.LENGTH_SHORT).show();
-                        }
-//                callGetStartEnd();
-                    }
-
-                    @Override
-                    public void onFailure(Call<FollowerNonFollowers> call, Throwable t) {
-                        // Log error here since request failed
-
-                        mProgressBar.setVisibility(View.GONE);
-
-                        Log.e("TAG", t.toString());
-                    }
-                });
-            }
-        });
-    }*/
 
     public void getInterest()
     {
@@ -299,7 +211,7 @@ public class InterestSearchFragment extends Fragment {
                                 }
 
                                 if(categories!=null&&categories.size()!=0){
-                                    InterestFollowAdapter adapter = new InterestFollowAdapter(getActivity(),categories);
+                                    InterestSearchAdapter adapter = new InterestSearchAdapter(getActivity(),categories);
                                     recyclerViewNonFolloers.setAdapter(adapter);
                                 }
 

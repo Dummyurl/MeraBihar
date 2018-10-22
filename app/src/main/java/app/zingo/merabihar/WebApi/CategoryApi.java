@@ -3,6 +3,7 @@ package app.zingo.merabihar.WebApi;
 import java.util.ArrayList;
 
 import app.zingo.merabihar.Model.Category;
+import app.zingo.merabihar.Model.CategoryAndContentList;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -21,4 +22,10 @@ public interface CategoryApi {
 
     @GET("GetCategoriesByCityId/{CityId}")
     Call<ArrayList<Category>> getCategoriesByCityId(@Path("CityId") int id);
+
+    @GET("ProfileCategoryMappings/GetCategoryByProfileId/{ProfileId}")
+    Call<ArrayList<Category>> getCategoriesByProfileId(@Path("ProfileId") int id);
+
+    @GET("Categories/GetContentAndCategoriesByCityId/{CityId}")
+    Call<ArrayList<CategoryAndContentList>> getContentAndCategoryByCityId(@Path("CityId") int id);
 }

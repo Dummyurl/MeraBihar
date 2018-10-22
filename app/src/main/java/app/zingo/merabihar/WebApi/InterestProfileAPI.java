@@ -2,6 +2,7 @@ package app.zingo.merabihar.WebApi;
 
 import java.util.ArrayList;
 
+import app.zingo.merabihar.Model.Contents;
 import app.zingo.merabihar.Model.Interest;
 import app.zingo.merabihar.Model.InterestProfileMapping;
 import app.zingo.merabihar.Model.ProfileFollowMapping;
@@ -31,6 +32,9 @@ public interface InterestProfileAPI {
 
     @GET("ProfileInterestMappings/GetInterestByProfileId/{ProfileId}")
     Call<ArrayList<InterestProfileMapping>> getInterestByProfileId(@Path("ProfileId") int id);
+
+    @GET("ProfileInterestMappings/GetContentByProfileId/{ProfileId}")
+    Call<ArrayList<Contents>> getContentofInterestByProfileId(@Path("ProfileId") int id);
 
     @GET("ProfileInterestMappings/GetProfileByInterestId/{InterestId}")
     Call<ArrayList<InterestProfileMapping>> getProfileByInterestId(@Path("InterestId") int id);

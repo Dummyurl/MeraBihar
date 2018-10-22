@@ -18,5 +18,6 @@ public class Constants {
     public static final String CITY_NAME = "Bihar";
     public static final String ACTIVITY = "activity";
     public static final String YOUTUBE = "AIzaSyA5lz66RDcgiax1Ws65Cdg1M7ApDMXPU8w";
+    public static final String KEY = "AIzaSyA5lz66RDcgiax1Ws65Cdg1M7ApDMXPU8w";
     public static final String USER_ROLE_UNIQUE_ID = "user_role_unique_id";
 }

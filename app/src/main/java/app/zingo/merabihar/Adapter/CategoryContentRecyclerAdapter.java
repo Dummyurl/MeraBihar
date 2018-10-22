@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import app.zingo.merabihar.Model.Blogs;
 import app.zingo.merabihar.Model.Category;
+import app.zingo.merabihar.Model.CategoryAndContentList;
 import app.zingo.merabihar.Model.Contents;
 import app.zingo.merabihar.Model.UserProfile;
 import app.zingo.merabihar.R;
@@ -40,8 +41,8 @@ import retrofit2.Response;
 
 public class CategoryContentRecyclerAdapter extends RecyclerView.Adapter<CategoryContentRecyclerAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<Category> list;
-    public CategoryContentRecyclerAdapter(Context context,ArrayList<Category> list) {
+    private ArrayList<CategoryAndContentList> list;
+    public CategoryContentRecyclerAdapter(Context context,ArrayList<CategoryAndContentList> list) {
 
         this.context = context;
         this.list = list;
@@ -67,12 +68,23 @@ public class CategoryContentRecyclerAdapter extends RecyclerView.Adapter<Categor
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        final Category category = list.get(position);
+        final CategoryAndContentList category = list.get(position);
 
         if(category!=null){
 
-            holder.mName.setText("Stories in "+category.getCategoriesName());
-            getContents(category.getCategoriesId(),holder.mConteList);
+            holder.mName.setText("Stories in "+category.getCategories().getCategoriesName());
+            //getContents(category.getContentList(),holder.mConteList);
+
+            ArrayList<Contents> contentsList = category.getContentList();
+
+            if(contentsList != null && contentsList.size() != 0)
+            {
+
+                ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(context,contentsList);
+                holder.mConteList.setAdapter(adapter);
+
+
+            }
 
         }
 

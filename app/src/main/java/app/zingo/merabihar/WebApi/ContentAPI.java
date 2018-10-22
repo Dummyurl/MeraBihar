@@ -19,4 +19,7 @@ public interface ContentAPI {
 
     @GET("Contents/GetContentByCategoryId/{CategoryId}")
     Call<ArrayList<Contents>> getContentsByCatId(@Path("CategoryId") int id);
+
+    @GET("Contents/GetFavouriteContentByProfileId/{ProfileId}")
+    Call<ArrayList<Contents>> getFavContentsByProfileId(@Path("ProfileId") int id);
 }

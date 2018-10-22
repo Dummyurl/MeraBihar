@@ -18,6 +18,8 @@
     <string name="story">Story</string>
     <string name="account">Account</string>
 
+    <string name="video_component_tag">video_container</string>w
+
     <string name="powered_by_zingo">Powered By Zingo</string>
     <string name="terms">I agree to the <u> Privacy Policy</u>.</string>
     <string name="copyright_lucida">&#9400; Lucida Hospitality Pvt Ltd</string>

@@ -84,7 +84,7 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
             labelSearch.setText(getResources().getString(R.string.search));
             imgSearch.setImageResource(R.drawable.ic_search_black_24dp);
             tabStay.setIndicator(tabIndicatorStayView);
-            tabStay.setContent(new Intent(this, SearchActivity.class));
+            tabStay.setContent(new Intent(this, TabSearchActivity.class));
             //tabStay.setContent(new Intent(this, RoomViewStayActivity.class));
 
             labelStory.setText(getResources().getString(R.string.story));

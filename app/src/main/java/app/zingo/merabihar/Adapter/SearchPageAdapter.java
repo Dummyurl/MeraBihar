@@ -22,7 +22,7 @@ import app.zingo.merabihar.UI.ActivityScreen.SearchScreens.SubCategoriesSearchFr
 public class SearchPageAdapter extends FragmentStatePagerAdapter {
 
 
-    String[] tabTitles = {"People", "Interests", "Collection","Experiences","Stories"};
+    String[] tabTitles = {"People", "Interests", "Collection","Stories"};
 
     public SearchPageAdapter(FragmentManager fm) {
         super(fm);
@@ -50,11 +50,11 @@ public class SearchPageAdapter extends FragmentStatePagerAdapter {
                 CategoriesSearchFragment collection = new CategoriesSearchFragment();
                 return collection;
 
-            case 3:
+            /*case 3:
                 SubCategoriesSearchFragment experience = new SubCategoriesSearchFragment();
-                return experience;
+                return experience;*/
 
-            case 4:
+            case 3:
                 ContentSearchFragment contents = new ContentSearchFragment();
                 return contents;
 

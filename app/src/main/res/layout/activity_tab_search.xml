@@ -1,0 +1,121 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".UI.ActivityScreen.MainTabHostActivity.TabSearchActivity">
+
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        style="@style/appBarLayout"
+        android:background="#FFFFFF"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@id/toolbar"
+            android:background="@drawable/shape_bottom_stroke_grey_light"
+            android:fitsSystemWindows="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:actionBarSize"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/search_layout"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    app:srcCompat="@drawable/ic_search_black_24dp"
+                    ></ImageView>
+
+                <TextView
+                    android:id="@+id/search_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:hint="Search.."
+                    android:textSize="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:background="@android:color/transparent"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:background="#FFFFFFFF"
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            >
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:focusable="true"
+                    android:visibility="gone"
+                    android:focusableInTouchMode="true"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:padding="2dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/category_layout">
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="0.0sp"
+                    android:focusable="false"
+                    android:background="#FFFFFF"
+                    android:id="@+id/image_list"
+                    />
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

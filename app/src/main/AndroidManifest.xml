@@ -32,7 +32,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".UI.ActivityScreen.LandingScreen.SplashScreenActivty"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UI.ActivityScreen.LandingScreen.LandingScreenActivity"
             android:label=""
@@ -128,7 +128,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.ActivityScreen.MainTabHostActivity.TabHomeScreen"
+        <activity
+            android:name=".UI.ActivityScreen.MainTabHostActivity.TabHomeScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.ActivityScreen.MainTabHostActivity.TabSearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UI.ActivityScreen.Contents.ConentDetailScreen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 

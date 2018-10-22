@@ -15,7 +15,7 @@
             android:layout_height="50dp"
             android:background="#fff"
             app:tabSelectedTextColor="#616161"
-            app:tabMode="scrollable"
+            app:tabMode="fixed"
             app:tabTextColor="#000"
             android:id="@+id/following_tabs"/>
         <View

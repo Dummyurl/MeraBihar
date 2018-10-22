@@ -34,6 +34,12 @@ public interface ProfileFollowAPI {
     @GET("Follow/GetFollowersByProfileId/{ProfileId}")
     Call<ArrayList<UserProfile>> getFollowingByProfileId(@Path("ProfileId") int id);
 
+    @GET("Follow/GetFollowersContentByProfileId/{ProfileId}")
+    Call<ArrayList<UserProfile>> getFollowersContentByProfileId(@Path("ProfileId") int id);
+
+    @GET("Follow/GetFollowingContentByProfileId/{ProfileId}")
+    Call<ArrayList<UserProfile>> getFollowingContentByProfileId(@Path("ProfileId") int id);
+
     @PUT("Follows/{id}")
     Call<ProfileFollowMapping> updateProfile(@Path("id") int id, @Body ProfileFollowMapping body);
 
