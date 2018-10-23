@@ -136,11 +136,23 @@
             android:name=".UI.ActivityScreen.MainTabHostActivity.TabSearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UI.ActivityScreen.Contents.ConentDetailScreen"
+        <activity
+            android:name=".UI.ActivityScreen.MainTabHostActivity.TabAccountActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.ActivityScreen.Contents.ConentDetailScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.ActivityScreen.MainTabHostActivity.TabVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.ActivityScreen.MainTabHostActivity.TabPostOptionsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".UI.ActivityScreen.Contents.PostContentScreen"></activity>
     </application>
 
 </manifest>

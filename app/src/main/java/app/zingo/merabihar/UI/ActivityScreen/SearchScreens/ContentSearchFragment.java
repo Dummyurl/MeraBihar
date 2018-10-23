@@ -23,6 +23,7 @@ import app.zingo.merabihar.Model.Category;
 import app.zingo.merabihar.Model.Contents;
 import app.zingo.merabihar.Model.UserProfile;
 import app.zingo.merabihar.R;
+import app.zingo.merabihar.Util.Constants;
 import app.zingo.merabihar.Util.PreferenceHandler;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
@@ -182,7 +183,7 @@ public class ContentSearchFragment extends Fragment {
             public void run() {
 
                 final ContentAPI categoryApi = Util.getClient().create(ContentAPI.class);
-                Call<ArrayList<Contents>> getBlog = categoryApi.getContentsByCityId(2);
+                Call<ArrayList<Contents>> getBlog = categoryApi.getContentsByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Blogs>> getBlog = blogApi.getBlogs();
 
                 getBlog.enqueue(new Callback<ArrayList<Contents>>() {

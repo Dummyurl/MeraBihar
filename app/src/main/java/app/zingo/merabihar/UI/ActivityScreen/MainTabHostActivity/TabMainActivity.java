@@ -24,16 +24,17 @@ import app.zingo.merabihar.UI.ActivityScreen.SearchScreens.SearchActivity;
 public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeListener{
 
     TabHost tabHost;
-    View tabIndicatorHome,tabIndicatorStayView,tabIndicatorNotification,tabIndicatorMenu;
+    View tabIndicatorHome,tabIndicatorStayView,tabIndicatorNotification,tabIndicatorVideo,tabIndicatorMenu;
 
     public static String HOME_TAB = "Home Tab";
     public static String SEARCH_TAB = "Search Tab";
     public static String STORY_TAB = "Story Tab";
+    public static String VIDEO_TAB = "Video Tab";
     public static String ACCOUNT_TAB = "Account Tab";
 
 
-    TextView labelHome, labelSearch, labelStory, labelAccount;
-    ImageView imgHome, imgSearch, imgStory, imgAccount;
+    TextView labelHome, labelSearch, labelStory, labelVideo,labelAccount;
+    ImageView imgHome, imgSearch, imgStory, imgVideo,imgAccount;
 
     int defaultValue = 0;
     public static final int MY_PERMISSIONS_REQUEST_RESULT = 1;
@@ -56,6 +57,7 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
             tabIndicatorHome = LayoutInflater.from(this).inflate(R.layout.tabhost_items_layout, null);
             tabIndicatorStayView= LayoutInflater.from(this).inflate(R.layout.tabhost_items_layout, null);
             tabIndicatorNotification = LayoutInflater.from(this).inflate(R.layout.tabhost_items_layout, null);
+            tabIndicatorVideo = LayoutInflater.from(this).inflate(R.layout.tabhost_items_layout, null);
             tabIndicatorMenu = LayoutInflater.from(this).inflate(R.layout.tabhost_items_layout, null);
 
             labelHome = tabIndicatorHome.findViewById(R.id.tab_label);
@@ -67,12 +69,16 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
             labelStory = tabIndicatorNotification.findViewById(R.id.tab_label);
             imgStory = tabIndicatorNotification.findViewById(R.id.tab_image);
 
+            labelVideo = tabIndicatorVideo.findViewById(R.id.tab_label);
+            imgVideo = tabIndicatorVideo.findViewById(R.id.tab_image);
+
             labelAccount = tabIndicatorMenu.findViewById(R.id.tab_label);
             imgAccount = tabIndicatorMenu.findViewById(R.id.tab_image);
 
             TabHost.TabSpec tabHome = tabHost.newTabSpec(HOME_TAB);
             TabHost.TabSpec tabStay= tabHost.newTabSpec(SEARCH_TAB);
             TabHost.TabSpec tabNotification = tabHost.newTabSpec(STORY_TAB);
+            TabHost.TabSpec tabVideo = tabHost.newTabSpec(VIDEO_TAB);
             TabHost.TabSpec tabMenu = tabHost.newTabSpec(ACCOUNT_TAB);
 /*9C9C9C*/
             labelHome.setText(getResources().getString(R.string.home));
@@ -91,12 +97,18 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
             imgStory.setImageResource(R.drawable.ic_image_black_24dp);
             tabNotification.setIndicator(tabIndicatorNotification);
             //tabNotification.setContent(new Intent(this, NotificationOptionsActivity.class));
-            tabNotification.setContent(new Intent(this, AboutCity.class));
+            tabNotification.setContent(new Intent(this, TabPostOptionsActivity.class));
+
+            labelVideo.setText(getResources().getString(R.string.video));
+            imgVideo.setImageResource(R.drawable.video_gallery);
+            tabVideo.setIndicator(tabIndicatorVideo);
+            //tabNotification.setContent(new Intent(this, NotificationOptionsActivity.class));
+            tabVideo.setContent(new Intent(this, TabVideoActivity.class));
 
             labelAccount.setText(getResources().getString(R.string.account));
             imgAccount.setImageResource(R.drawable.person_icon_navi);
             tabMenu.setIndicator(tabIndicatorMenu);
-            tabMenu.setContent(new Intent(this, AboutBlogs.class));
+            tabMenu.setContent(new Intent(this, TabAccountActivity.class));
 
 
 
@@ -112,6 +124,7 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
             tabHost.addTab(tabHome);
             tabHost.addTab(tabStay);
             tabHost.addTab(tabNotification);
+            tabHost.addTab(tabVideo);
             tabHost.addTab(tabMenu);
 
 
@@ -153,6 +166,10 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
         labelStory.setTypeface(Typeface.DEFAULT);
         imgStory.setImageResource(R.drawable.ic_image_black_24dp);
 
+        labelVideo.setTextColor(Color.parseColor("#000000"));
+        labelVideo.setTypeface(Typeface.DEFAULT);
+        imgVideo.setImageResource(R.drawable.video_gallery);
+
         labelAccount.setTextColor(Color.parseColor("#000000"));
         labelAccount.setTypeface(Typeface.DEFAULT);
         imgAccount.setImageResource(R.drawable.person_icon_navi);
@@ -175,6 +192,10 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
             labelStory.setTextColor(Color.parseColor("#540CFA"));
             labelStory.setTypeface(null, Typeface.BOLD);
             imgStory.setImageResource(R.drawable.selected_story);
+        } else if (VIDEO_TAB.equals(tabId)) {
+            labelVideo.setTextColor(Color.parseColor("#540CFA"));
+            labelVideo.setTypeface(null, Typeface.BOLD);
+            imgVideo.setImageResource(R.drawable.video_gallery_selected);
         } else if (ACCOUNT_TAB.equals(tabId)) {
             labelAccount.setTextColor(Color.parseColor("#540CFA"));
             labelAccount.setTypeface(null, Typeface.BOLD);

@@ -116,7 +116,7 @@ public class PeopleFollowingScreen extends Fragment {
                 ProfileAPI apiService =
                         Util.getClient().create(ProfileAPI.class);
 
-                Call<ArrayList<UserProfile>> call = apiService.getUserByUserRoleId(id);
+                Call<ArrayList<UserProfile>> call = apiService.getProfiles();
 
                 call.enqueue(new Callback<ArrayList<UserProfile>>() {
                     @Override

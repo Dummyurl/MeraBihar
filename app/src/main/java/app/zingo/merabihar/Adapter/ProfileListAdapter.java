@@ -77,6 +77,8 @@ public class ProfileListAdapter extends RecyclerView.Adapter<ProfileListAdapter.
                         error(R.drawable.profile_image).into(holder.mPhoto);
 
 
+            }else{
+                holder.mPhoto.setImageResource(R.drawable.profile_image);
             }
 
 

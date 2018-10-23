@@ -22,6 +22,9 @@ public class Likes implements Serializable {
     @SerializedName("ProfileId")
     public int ProfileId;
 
+    @SerializedName("IsLiked")
+    public boolean IsLiked;
+
     public int getLikeId() {
         return LikeId;
     }
@@ -52,5 +55,13 @@ public class Likes implements Serializable {
 
     public void setProfileId(int profileId) {
         ProfileId = profileId;
+    }
+
+    public boolean isLiked() {
+        return IsLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        IsLiked = liked;
     }
 }

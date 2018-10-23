@@ -24,6 +24,9 @@ public interface InterestProfileAPI {
     @POST("ProfileInterestMappings")
     Call<InterestProfileMapping> postInterest(@Body InterestProfileMapping body);
 
+    @POST("ProfileInterestMappings/AddMultipleMapping")
+    Call<ArrayList<InterestProfileMapping>> postMultipleInterest(@Body ArrayList<InterestProfileMapping> body);
+
     @DELETE("ProfileInterestMappings/{id}")
     Call<InterestProfileMapping> deleteIntrs(@Path("id") int id);
 

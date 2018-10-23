@@ -92,7 +92,7 @@ public class CategoryFollowScreen extends Fragment {
             public void run() {
                 final CategoryApi categoryAPI = Util.getClient().create(CategoryApi.class);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategoriesByCityId(Constants.CITY_ID);
-                Call<ArrayList<Category>> getCat = categoryAPI.getCategoriesByCityId(2);
+                Call<ArrayList<Category>> getCat = categoryAPI.getCategoriesByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
 
                 getCat.enqueue(new Callback<ArrayList<Category>>() {

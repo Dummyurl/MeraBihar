@@ -30,6 +30,7 @@ import app.zingo.merabihar.Model.SubCategories;
 import app.zingo.merabihar.Model.UserProfile;
 import app.zingo.merabihar.R;
 import app.zingo.merabihar.UI.ActivityScreen.LandingScreen.LandingScreenActivity;
+import app.zingo.merabihar.Util.Constants;
 import app.zingo.merabihar.Util.PreferenceHandler;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
@@ -96,8 +97,8 @@ public class TabHomeScreen extends AppCompatActivity {
             mContentsCityPager.setPageMargin(10);
 
             getCategoryAndContent();
-            //int userId = PreferenceHandler.getInstance(TabHomeScreen.this).getUserId();
-            int userId = 49;
+            int userId = PreferenceHandler.getInstance(TabHomeScreen.this).getUserId();
+            //int userId = 49;
 
             if(userId!=0){
                 getFollowingByProfileId(userId);
@@ -287,7 +288,7 @@ public class TabHomeScreen extends AppCompatActivity {
             public void run() {
 
                 final ContentAPI categoryAPI = Util.getClient().create(ContentAPI.class);
-                Call<ArrayList<Contents>> getCat = categoryAPI.getContentsByCityId(2);
+                Call<ArrayList<Contents>> getCat = categoryAPI.getContentsByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
 
                 getCat.enqueue(new Callback<ArrayList<Contents>>() {
@@ -410,7 +411,7 @@ public class TabHomeScreen extends AppCompatActivity {
             public void run() {
 
                 final CategoryApi categoryAPI = Util.getClient().create(CategoryApi.class);
-                Call<ArrayList<Category>> getCat = categoryAPI.getCategoriesByCityId(2);
+                Call<ArrayList<Category>> getCat = categoryAPI.getCategoriesByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
 
                 getCat.enqueue(new Callback<ArrayList<Category>>() {
@@ -479,7 +480,7 @@ public class TabHomeScreen extends AppCompatActivity {
             public void run() {
 
                 final CategoryApi categoryAPI = Util.getClient().create(CategoryApi.class);
-                Call<ArrayList<CategoryAndContentList>> getCat = categoryAPI.getContentAndCategoryByCityId(2);
+                Call<ArrayList<CategoryAndContentList>> getCat = categoryAPI.getContentAndCategoryByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
 
                 getCat.enqueue(new Callback<ArrayList<CategoryAndContentList>>() {
@@ -492,7 +493,18 @@ public class TabHomeScreen extends AppCompatActivity {
                         if(response.code() == 200)
                         {
 
-                            categoryAndContentList = response.body();
+                            ArrayList<CategoryAndContentList> body = response.body();
+                            categoryAndContentList = new ArrayList<>();
+
+
+                            for (CategoryAndContentList categoryContent: body) {
+
+                                if(categoryContent.getContentList()!=null&&categoryContent.getContentList().size()!=0){
+
+                                    categoryAndContentList.add(categoryContent);
+                                }
+
+                            }
 
                             if(categoryAndContentList != null && categoryAndContentList.size() != 0)
                             {
@@ -543,7 +555,7 @@ public class TabHomeScreen extends AppCompatActivity {
             public void run() {
 
                 final SubCategoryAPI categoryAPI = Util.getClient().create(SubCategoryAPI.class);
-                Call<ArrayList<SubCategories>> getCat = categoryAPI.getSubCategoriesByCityId(2);
+                Call<ArrayList<SubCategories>> getCat = categoryAPI.getSubCategoriesByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
 
                 getCat.enqueue(new Callback<ArrayList<SubCategories>>() {

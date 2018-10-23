@@ -93,11 +93,13 @@ public class CategoryContentRecyclerAdapter extends RecyclerView.Adapter<Categor
     @Override
     public int getItemCount() {
 
-        if(list.size()>=5){
+      /*  if(list.size()>=5){
             return 5;
         }else{
             return list.size();
-        }
+        }*/
+
+        return list.size();
 
     }
 
@@ -120,67 +122,6 @@ public class CategoryContentRecyclerAdapter extends RecyclerView.Adapter<Categor
 
         }
 
-
-    }
-
-    public void getContents(final int id,final RecyclerView recyclerView)
-    {
-
-
-        new ThreadExecuter().execute(new Runnable() {
-            @Override
-            public void run() {
-
-                final ContentAPI categoryAPI = Util.getClient().create(ContentAPI.class);
-                Call<ArrayList<Contents>> getCat = categoryAPI.getContentsByCatId(id);
-                //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
-
-                getCat.enqueue(new Callback<ArrayList<Contents>>() {
-
-                    @Override
-                    public void onResponse(Call<ArrayList<Contents>> call, Response<ArrayList<Contents>> response) {
-
-
-
-                        if(response.code() == 200)
-                        {
-
-                            ArrayList<Contents> contentsList = response.body();
-
-                            if(contentsList != null && contentsList.size() != 0)
-                            {
-
-                                ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(context,contentsList);
-                                recyclerView.setAdapter(adapter);
-
-
-                            }
-                            else
-                            {
-
-                                //mContentsCityPager.setVisibility(View.GONE);
-                            }
-                        }else{
-                           // mContentsCityPager.setVisibility(View.GONE);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ArrayList<Contents>> call, Throwable t) {
-
-                        /*mContentProgress.setVisibility(View.GONE);
-                        mContentsCityPager.setVisibility(View.GONE);*/
-
-                        Toast.makeText(context,t.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-                //System.out.println(TAG+" thread started");
-
-            }
-
-        });
 
     }
 

@@ -22,6 +22,7 @@ import app.zingo.merabihar.Model.InterestProfileMapping;
 import app.zingo.merabihar.R;
 import app.zingo.merabihar.UI.ActivityScreen.Events.AboutCity;
 import app.zingo.merabihar.UI.ActivityScreen.Events.ListOfEventsActivity;
+import app.zingo.merabihar.UI.ActivityScreen.MainTabHostActivity.TabMainActivity;
 import app.zingo.merabihar.Util.PreferenceHandler;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
@@ -58,7 +59,7 @@ public class PickInterestsScreenForProfile extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Intent i = new Intent(PickInterestsScreenForProfile.this, HomeLandingBottomScreen.class);
+                    Intent i = new Intent(PickInterestsScreenForProfile.this, TabMainActivity.class);
                     startActivity(i);
                     PickInterestsScreenForProfile.this.finish();
 
@@ -97,22 +98,21 @@ public class PickInterestsScreenForProfile extends AppCompatActivity {
 
                         int count = 0;
 
+                        ArrayList<InterestProfileMapping> interestProfileMappings = new ArrayList<>();
                         for (int k =0;k<zingoInterestId.size();k++){
                             count = count+1;
                             InterestProfileMapping pm = new InterestProfileMapping();
                             pm.setZingoInterestId(zingoInterestId.get(k));
                             pm.setProfileId(PreferenceHandler.getInstance(PickInterestsScreenForProfile.this).getUserId());
 
-                            if(count==zingoInterestId.size()){
+                            interestProfileMappings.add(pm);
 
-                                profileInterest(pm,"Completed");
 
-                            }else{
+                        }
 
-                                profileInterest(pm,"Processing");
+                        if(interestProfileMappings!=null&&interestProfileMappings.size()!=0){
 
-                            }
-
+                            profileInterest(interestProfileMappings);
                         }
 
                     }
@@ -185,30 +185,27 @@ public class PickInterestsScreenForProfile extends AppCompatActivity {
         });
     }
 
-    private void profileInterest(final InterestProfileMapping intrst,final String status) {
+    private void profileInterest(final ArrayList<InterestProfileMapping> intrst) {
 
 
         new ThreadExecuter().execute(new Runnable() {
             @Override
             public void run() {
                 InterestProfileAPI mapApi = Util.getClient().create(InterestProfileAPI.class);
-                Call<InterestProfileMapping> response = mapApi.postInterest(intrst);
-                response.enqueue(new Callback<InterestProfileMapping>() {
+                Call<ArrayList<InterestProfileMapping>> response = mapApi.postMultipleInterest(intrst);
+                response.enqueue(new Callback<ArrayList<InterestProfileMapping>>() {
                     @Override
-                    public void onResponse(Call<InterestProfileMapping> call, Response<InterestProfileMapping> response) {
+                    public void onResponse(Call<ArrayList<InterestProfileMapping>> call, Response<ArrayList<InterestProfileMapping>> response) {
 
                         System.out.println(response.code());
 
                         if(response.code() == 201||response.code() == 200||response.code() == 204)
                         {
 
-
-                            if(status.equalsIgnoreCase("Completed")){
-
-                                Intent i = new Intent(PickInterestsScreenForProfile.this, HomeLandingBottomScreen.class);
+                                Intent i = new Intent(PickInterestsScreenForProfile.this, TabMainActivity.class);
                                 startActivity(i);
                                 finish();
-                            }
+
                         }
                         else
                         {
@@ -217,7 +214,7 @@ public class PickInterestsScreenForProfile extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<InterestProfileMapping> call, Throwable t) {
+                    public void onFailure(Call<ArrayList<InterestProfileMapping>> call, Throwable t) {
 
                         Toast.makeText(PickInterestsScreenForProfile.this,t.getMessage(),Toast.LENGTH_SHORT).show();
 

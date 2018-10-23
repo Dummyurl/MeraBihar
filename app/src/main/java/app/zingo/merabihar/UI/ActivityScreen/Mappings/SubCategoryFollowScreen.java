@@ -88,7 +88,7 @@ public class SubCategoryFollowScreen extends Fragment {
             @Override
             public void run() {
                 final SubCategoryAPI categoryAPI = Util.getClient().create(SubCategoryAPI.class);
-                Call<ArrayList<SubCategories>> getCat = categoryAPI.getSubCategoriesByCityId(2);
+                Call<ArrayList<SubCategories>> getCat = categoryAPI.getSubCategoriesByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getSubCategoriesByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
 

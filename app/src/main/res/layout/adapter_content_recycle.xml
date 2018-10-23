@@ -4,77 +4,195 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:padding="10dp"
-    android:id="@+id/content_detail_layout"
+
     android:layout_height="wrap_content">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="400dp"
         app:cardElevation="5dp"
         app:cardCornerRadius="5dp">
-        <FrameLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/content_images"
-                android:scaleType="fitXY"/>
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50sp"
-                android:id="@+id/youtube_icon"
-                android:visibility="gone"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_video_play"
-                android:scaleType="fitXY"/>
-
-
-            <View
-                android:background="@color/transparentBlack"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
 
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/content_name"
+                android:paddingRight="10dp"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_profile_photo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:text=""
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    />
+                    android:elevation="25dp"
+                    android:padding="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_image" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/content_subcategory"
-                    android:textColor="#ffffff"
-                    android:textSize="18sp"
-                    android:layout_margin="5dp"
-                    android:layout_gravity="center"
-                    android:text=""
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/content_by"
-                    android:textColor="#ffffff"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
                     android:text=""
-                    android:layout_margin="5dp"
-                    android:textSize="18sp"
-                    android:layout_gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
                     />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/follow_people"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/button_background"
+                    android:text="Follow"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/regularFont"
+
+                    />
+
             </LinearLayout>
-        </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/content_detail_layout"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/content_images"
+                    android:scaleType="fitXY"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50sp"
+                    android:id="@+id/youtube_icon"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_video_play"
+                    android:scaleType="fitXY"/>
+
+
+                <View
+                    android:background="@color/transparentBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/content_name"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text=""
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/content_subcategory"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center"
+                        android:text=""
+                        />
+
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:background="@color/transparentBlack"
+                android:paddingRight="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/like_icon"
+                    android:src="@drawable/like"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:id="@+id/liked_icon"
+                    android:src="@drawable/liked"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="0"
+                    android:id="@+id/like_count"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20dp"
+                    android:textColor="#ffffff"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/dislike_icon"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/dislike"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:id="@+id/disliked_icon"
+                    android:src="@drawable/disliked"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="0"
+                    android:id="@+id/dislike_count"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20dp"
+                    android:textColor="#ffffff"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/comments_icon"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/comments"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="0"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20dp"
+                    android:id="@+id/comments_count"
+                    android:textColor="#ffffff"/>
+
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

@@ -16,6 +16,7 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="story">Story</string>
+    <string name="video">Video</string>
     <string name="account">Account</string>
 
     <string name="video_component_tag">video_container</string>w

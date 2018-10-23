@@ -182,7 +182,7 @@ public class CategoriesSearchFragment extends Fragment {
             public void run() {
 
                 final CategoryApi categoryApi = Util.getClient().create(CategoryApi.class);
-                Call<ArrayList<Category>> getBlog = categoryApi.getCategoriesByCityId(2);
+                Call<ArrayList<Category>> getBlog = categoryApi.getCategoriesByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Blogs>> getBlog = blogApi.getBlogs();
 
                 getBlog.enqueue(new Callback<ArrayList<Category>>() {

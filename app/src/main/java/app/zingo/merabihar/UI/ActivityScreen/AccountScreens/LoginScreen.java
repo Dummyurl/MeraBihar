@@ -46,8 +46,8 @@ import java.util.Date;
 import app.zingo.merabihar.Model.UserProfile;
 import app.zingo.merabihar.Model.UserRole;
 import app.zingo.merabihar.R;
-import app.zingo.merabihar.UI.ActivityScreen.LandingScreen.HomeLandingBottomScreen;
 import app.zingo.merabihar.UI.ActivityScreen.LandingScreen.LandingScreenActivity;
+import app.zingo.merabihar.UI.ActivityScreen.MainTabHostActivity.TabMainActivity;
 import app.zingo.merabihar.Util.Constants;
 import app.zingo.merabihar.Util.PreferenceHandler;
 import app.zingo.merabihar.Util.ThreadExecuter;
@@ -362,7 +362,7 @@ public class LoginScreen extends AppCompatActivity implements GoogleApiClient.On
                                 }
 
                                 Toast.makeText(LoginScreen.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(LoginScreen.this, HomeLandingBottomScreen.class);
+                                Intent i = new Intent(LoginScreen.this, TabMainActivity.class);
                                 i.putExtra("Profile",dto);
                                 startActivity(i);
                                 finish();
@@ -629,7 +629,7 @@ public class LoginScreen extends AppCompatActivity implements GoogleApiClient.On
 
 
                                 Toast.makeText(LoginScreen.this,"Profile created Successfull",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginScreen.this, HomeLandingBottomScreen.class);
+                                Intent intent = new Intent(LoginScreen.this, TabMainActivity.class);
                                 startActivity(intent);
                                 LoginScreen.this.finish();
 
@@ -750,7 +750,7 @@ public class LoginScreen extends AppCompatActivity implements GoogleApiClient.On
                                     }
 
                                     Toast.makeText(LoginScreen.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(LoginScreen.this, HomeLandingBottomScreen.class);
+                                    Intent i = new Intent(LoginScreen.this, TabMainActivity.class);
                                     i.putExtra("Profile",dto);
                                     startActivity(i);
                                     finish();

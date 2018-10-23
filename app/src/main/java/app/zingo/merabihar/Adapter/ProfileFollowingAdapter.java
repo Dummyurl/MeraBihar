@@ -69,6 +69,8 @@ public class ProfileFollowingAdapter extends RecyclerView.Adapter<ProfileFollowi
                         error(R.drawable.profile_image).into(holder.mPhoto);
 
 
+            }else{
+                holder.mPhoto.setImageResource(R.drawable.profile_image);
             }
 
             holder.mFollow.setVisibility(View.GONE);

@@ -22,6 +22,7 @@ import app.zingo.merabihar.Model.ContentImages;
 import app.zingo.merabihar.Model.Contents;
 import app.zingo.merabihar.R;
 import app.zingo.merabihar.UI.ActivityScreen.SearchScreens.SearchActivity;
+import app.zingo.merabihar.Util.Constants;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
 import app.zingo.merabihar.WebApi.CategoryApi;
@@ -70,7 +71,7 @@ public class TabSearchActivity extends AppCompatActivity {
             public void run() {
 
                 final CategoryApi categoryAPI = Util.getClient().create(CategoryApi.class);
-                Call<ArrayList<CategoryAndContentList>> getCat = categoryAPI.getContentAndCategoryByCityId(2);
+                Call<ArrayList<CategoryAndContentList>> getCat = categoryAPI.getContentAndCategoryByCityId(Constants.CITY_ID);
                 //Call<ArrayList<Category>> getCat = categoryAPI.getCategories();
 
                 getCat.enqueue(new Callback<ArrayList<CategoryAndContentList>>() {
@@ -203,4 +204,23 @@ public class TabSearchActivity extends AppCompatActivity {
         listView.requestLayout();
         //mImagesList.getChildAt(0).requestFocus();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        goBack();
+    }
+
+    private void goBack()
+    {
+
+        Intent intent = new Intent(TabSearchActivity.this,TabMainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        TabSearchActivity.this.finish();
+    }
+
 }
