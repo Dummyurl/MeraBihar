@@ -25,8 +25,15 @@ public interface ContentAPI {
     @GET("Contents/GetContentByCategoryId/{CategoryId}")
     Call<ArrayList<Contents>> getContentsByCatId(@Path("CategoryId") int id);
 
+
+    @GET("Contents/GetContentBySubCategoriesId/{SubCategoriesId}")
+    Call<ArrayList<Contents>> getContentsBySubCatId(@Path("SubCategoriesId") int id);
+
     @GET("Contents/GetFavouriteContentByProfileId/{ProfileId}")
     Call<ArrayList<Contents>> getFavContentsByProfileId(@Path("ProfileId") int id);
+
+    @GET("Contents/{id}")
+    Call<Contents> getContentsById(@Path("id") int id);
 
     @POST("Contents")
     Call<Contents> postContent(@Body Contents body);

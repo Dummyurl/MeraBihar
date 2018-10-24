@@ -1,6 +1,8 @@
 package app.zingo.merabihar.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 import app.zingo.merabihar.Model.Category;
 import app.zingo.merabihar.Model.SubCategories;
 import app.zingo.merabihar.R;
+import app.zingo.merabihar.UI.ActivityScreen.Contents.CategoryBasedContents;
+import app.zingo.merabihar.UI.ActivityScreen.Contents.SubCategoryBasedContent;
 
 /**
  * Created by ZingoHotels Tech on 16-10-2018.
@@ -66,7 +70,17 @@ public class ExperienceContentAdapter extends RecyclerView.Adapter<ExperienceCon
             }
 
 
+            holder.mCategory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+                    Intent content = new Intent(context, SubCategoryBasedContent.class);
+                    Bundle bn = new Bundle();
+                    bn.putSerializable("SubCategory",category);
+                    content.putExtras(bn);
+                    context.startActivity(content);
+                }
+            });
 
 
         }
@@ -75,11 +89,13 @@ public class ExperienceContentAdapter extends RecyclerView.Adapter<ExperienceCon
 
     @Override
     public int getItemCount() {
-        if(list.size()>=5){
+      /*  if(list.size()>=5){
             return 5;
         }else{
             return list.size();
-        }
+        }*/
+
+        return list.size();
     }
 
 

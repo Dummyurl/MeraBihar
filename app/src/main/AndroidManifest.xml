@@ -151,8 +151,15 @@
         <activity
             android:name=".UI.ActivityScreen.MainTabHostActivity.TabPostOptionsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".UI.ActivityScreen.Contents.PostContentScreen"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UI.ActivityScreen.Contents.PostContentScreen" />
+        <activity android:name=".UI.ActivityScreen.Contents.CommentsScreen" />
+        <activity android:name=".UI.ActivityScreen.Contents.PostVideoYoutubeContent" />
+        <activity
+            android:name=".UI.ActivityScreen.Contents.CategoryBasedContents"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".UI.ActivityScreen.Contents.SubCategoryBasedContent"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

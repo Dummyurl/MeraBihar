@@ -50,7 +50,7 @@ import app.zingo.merabihar.Model.InterestContentMapping;
 import app.zingo.merabihar.Model.InterestContentResponse;
 import app.zingo.merabihar.Model.SubCategories;
 import app.zingo.merabihar.R;
-import app.zingo.merabihar.UI.ActivityScreen.LandingScreen.LandingScreenActivity;
+import app.zingo.merabihar.UI.ActivityScreen.MainTabHostActivity.TabMainActivity;
 import app.zingo.merabihar.Util.Action;
 import app.zingo.merabihar.Util.Constants;
 import app.zingo.merabihar.Util.PreferenceHandler;
@@ -792,7 +792,7 @@ public class PostContentScreen extends AppCompatActivity {
                             postEmail(emailModel);*/
 
                             Toast.makeText(PostContentScreen.this,"Blog created Successfull",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(PostContentScreen.this, LandingScreenActivity.class);
+                            Intent intent = new Intent(PostContentScreen.this, TabMainActivity.class);
                             startActivity(intent);
                             PostContentScreen.this.finish();
                         }
@@ -844,7 +844,7 @@ public class PostContentScreen extends AppCompatActivity {
                         if(response.code() == 201||response.code() == 200||response.code() == 204)
                         {
                             Toast.makeText(PostContentScreen.this,"Blog created Successfull",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(PostContentScreen.this, LandingScreenActivity.class);
+                            Intent intent = new Intent(PostContentScreen.this, TabMainActivity.class);
                             startActivity(intent);
                             PostContentScreen.this.finish();
                         }
@@ -947,7 +947,7 @@ public class PostContentScreen extends AppCompatActivity {
                         if(response.code() == 201||response.code() == 200||response.code() == 204)
                         {
                             Toast.makeText(PostContentScreen.this,"Blog created Successfull",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(PostContentScreen.this, LandingScreenActivity.class);
+                            Intent intent = new Intent(PostContentScreen.this, TabMainActivity.class);
                             startActivity(intent);
                             PostContentScreen.this.finish();
                         }
@@ -999,7 +999,7 @@ public class PostContentScreen extends AppCompatActivity {
                         if(response.code() == 201||response.code() == 200||response.code() == 204)
                         {
                             Toast.makeText(PostContentScreen.this,"Blog created Successfull",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(PostContentScreen.this, LandingScreenActivity.class);
+                            Intent intent = new Intent(PostContentScreen.this, TabMainActivity.class);
                             startActivity(intent);
                             PostContentScreen.this.finish();
                         }

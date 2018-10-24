@@ -9,6 +9,7 @@ public class Constants {
     public static final String BASE_URL = "http://zingolocals.azurewebsites.net/api/";
     public static final String IMAGE_URL = "http://zingolocals.azurewebsites.net/";
     public static final String USER_ID = "user_id";
+    public static final String POSITION_ID = "position_id";
     public static final String USER_PHONENUMER = "user_phonenumber";
     public static final String TOKEN = "auth_token";
     public static final String USER_NAME = "user_name";

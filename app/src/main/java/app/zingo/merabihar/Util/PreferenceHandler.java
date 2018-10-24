@@ -44,6 +44,16 @@ public class PreferenceHandler {
         return sh.getInt(Constants.USER_ID,0);
     }
 
+    public void setPositionId(int id)
+    {
+        sh.edit().putInt(Constants.POSITION_ID,id).apply();
+    }
+
+    public int getPositionId()
+    {
+        return sh.getInt(Constants.POSITION_ID,0);
+    }
+
     public void setListSize(int id)
     {
         sh.edit().putInt("List",id).apply();

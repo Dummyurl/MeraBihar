@@ -1,5 +1,6 @@
 package app.zingo.merabihar.UI.ActivityScreen.MainTabHostActivity;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,25 +12,20 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
+import java.util.Collections;
 
 import app.zingo.merabihar.Adapter.CategoryContentRecyclerAdapter;
 import app.zingo.merabihar.Adapter.ContentCategoryRecyclerAdapter;
 import app.zingo.merabihar.Adapter.ContentCityHomePager;
 import app.zingo.merabihar.Adapter.ContentCollectionAdapter;
 import app.zingo.merabihar.Adapter.ExperienceContentAdapter;
-import app.zingo.merabihar.Adapter.ProfileFollowingAdapter;
-import app.zingo.merabihar.Adapter.ProfileListAdapter;
-import app.zingo.merabihar.Adapter.ViewPagerAdapter;
 import app.zingo.merabihar.Model.Category;
 import app.zingo.merabihar.Model.CategoryAndContentList;
 import app.zingo.merabihar.Model.Contents;
 import app.zingo.merabihar.Model.SubCategories;
 import app.zingo.merabihar.Model.UserProfile;
 import app.zingo.merabihar.R;
-import app.zingo.merabihar.UI.ActivityScreen.LandingScreen.LandingScreenActivity;
 import app.zingo.merabihar.Util.Constants;
 import app.zingo.merabihar.Util.PreferenceHandler;
 import app.zingo.merabihar.Util.ThreadExecuter;
@@ -54,6 +50,8 @@ public class TabHomeScreen extends AppCompatActivity {
     ArrayList<Category> categoryList;
     ArrayList<CategoryAndContentList> categoryAndContentList;
     ArrayList<SubCategories> subcategoryList;
+
+    ContentCategoryRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +106,7 @@ public class TabHomeScreen extends AppCompatActivity {
                 mFollowerContentLayout.setVisibility(View.GONE);
             }
 
-            getContents();
+            //getContents();
             getCategories();
             getSubCategories();
 
@@ -165,8 +163,8 @@ public class TabHomeScreen extends AppCompatActivity {
                                 }
 
                                 if(followingContents!=null&& followingContents.size()!=0){
-
-                                    ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,followingContents);
+                                    Collections.shuffle(followingContents);
+                                    adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,followingContents);
                                     mFollowerContent.setAdapter(adapter);
                                 }
 
@@ -244,8 +242,8 @@ public class TabHomeScreen extends AppCompatActivity {
                                 }
 
                                 if(followingContents!=null&& followingContents.size()!=0){
-
-                                    ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,followingContents);
+                                    Collections.shuffle(followingContents);
+                                    adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,followingContents);
                                     mFollowingContent.setAdapter(adapter);
                                 }
 
@@ -368,8 +366,8 @@ public class TabHomeScreen extends AppCompatActivity {
                             if(contentsInterestList != null && contentsInterestList.size() != 0)
                             {
 
-
-                                ContentCategoryRecyclerAdapter adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,contentsInterestList);
+                                Collections.shuffle(contentsInterestList);
+                                adapter = new ContentCategoryRecyclerAdapter(TabHomeScreen.this,contentsInterestList);
                                 mInterestContent.setAdapter(adapter);
 
 
@@ -495,6 +493,7 @@ public class TabHomeScreen extends AppCompatActivity {
 
                             ArrayList<CategoryAndContentList> body = response.body();
                             categoryAndContentList = new ArrayList<>();
+                            contentsList = new ArrayList<>();
 
 
                             for (CategoryAndContentList categoryContent: body) {
@@ -502,6 +501,12 @@ public class TabHomeScreen extends AppCompatActivity {
                                 if(categoryContent.getContentList()!=null&&categoryContent.getContentList().size()!=0){
 
                                     categoryAndContentList.add(categoryContent);
+
+                                    for (Contents content:categoryContent.getContentList()) {
+
+                                        contentsList.add(content);
+
+                                    }
                                 }
 
                             }
@@ -509,9 +514,16 @@ public class TabHomeScreen extends AppCompatActivity {
                             if(categoryAndContentList != null && categoryAndContentList.size() != 0)
                             {
 
+                                Collections.shuffle(categoryAndContentList);
                                 CategoryContentRecyclerAdapter adapter = new CategoryContentRecyclerAdapter(TabHomeScreen.this,categoryAndContentList);
                                 mCategoryContents.setAdapter(adapter);
 
+
+
+                                if(contentsList!=null&&contentsList.size()!=0){
+                                   ContentCityHomePager adapters = new ContentCityHomePager(TabHomeScreen.this,contentsList);
+                                    mContentsCityPager.setAdapter(adapters);
+                                }
 
 
 
@@ -613,4 +625,6 @@ public class TabHomeScreen extends AppCompatActivity {
         });
 
     }
+
+
 }

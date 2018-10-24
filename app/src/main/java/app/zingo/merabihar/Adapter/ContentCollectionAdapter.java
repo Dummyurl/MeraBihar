@@ -23,6 +23,7 @@ import app.zingo.merabihar.Model.Category;
 import app.zingo.merabihar.Model.UserProfile;
 import app.zingo.merabihar.R;
 import app.zingo.merabihar.UI.ActivityScreen.AccountScreens.ProfileBlogList;
+import app.zingo.merabihar.UI.ActivityScreen.Contents.CategoryBasedContents;
 import app.zingo.merabihar.Util.ThreadExecuter;
 import app.zingo.merabihar.Util.Util;
 import app.zingo.merabihar.WebApi.BlogApi;
@@ -79,6 +80,17 @@ public class ContentCollectionAdapter extends RecyclerView.Adapter<ContentCollec
                 holder.mPhoto.setImageResource(R.drawable.no_image);
             }
 
+            holder.mCategory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent content = new Intent(context, CategoryBasedContents.class);
+                    Bundle bn = new Bundle();
+                    bn.putSerializable("Category",category);
+                    content.putExtras(bn);
+                    context.startActivity(content);
+                }
+            });
 
 
 
@@ -89,11 +101,13 @@ public class ContentCollectionAdapter extends RecyclerView.Adapter<ContentCollec
 
     @Override
     public int getItemCount() {
-        if(list.size()>=5){
+        /*if(list.size()>=5){
             return 5;
         }else{
             return list.size();
-        }
+        }*/
+
+        return list.size();
     }
 
 
