@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.zingo.merabihar.UI.ActivityScreen.Mappings.FollowProfileList">
+    tools:context="app.zingo.merabihars.UI.ActivityScreen.Mappings.FollowProfileList">
 
 </android.support.constraint.ConstraintLayout>

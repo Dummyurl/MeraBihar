@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <app.zingo.merabihar.Adapter.AutoScrollAdapter
+                <app.zingo.merabihars.Adapter.AutoScrollAdapter
                     android:id="@+id/about_blogs"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"

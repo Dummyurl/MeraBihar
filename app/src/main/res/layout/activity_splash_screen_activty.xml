@@ -10,7 +10,7 @@
 
     tools:context=".UI.ActivityScreen.LandingScreen.SplashScreenActivty">
 
-    <app.zingo.merabihar.CustomViews.CustomFontTextView
+    <app.zingo.merabihars.CustomViews.CustomFontTextView
         android:id="@+id/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:textSize="40sp"
         android:textStyle="normal"
         >
-    </app.zingo.merabihar.CustomViews.CustomFontTextView>
+    </app.zingo.merabihars.CustomViews.CustomFontTextView>
 
 
 
@@ -54,7 +54,7 @@
 
 
 
-        <app.zingo.merabihar.CustomViews.CustomFontTextView
+        <app.zingo.merabihars.CustomViews.CustomFontTextView
             android:id="@+id/powered_by"
             android:visibility="gone"
             android:layout_width="match_parent"
@@ -69,10 +69,10 @@
             android:textStyle="normal"
             app:fontName="Mistral">
 
-        </app.zingo.merabihar.CustomViews.CustomFontTextView>
+        </app.zingo.merabihars.CustomViews.CustomFontTextView>
 
 
-        <app.zingo.merabihar.CustomViews.CustomFontTextView
+        <app.zingo.merabihars.CustomViews.CustomFontTextView
             android:id="@+id/copyrights_by"
             android:visibility="gone"
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:textStyle="normal"
             app:fontName="arial">
 
-        </app.zingo.merabihar.CustomViews.CustomFontTextView>
+        </app.zingo.merabihars.CustomViews.CustomFontTextView>
 
 
     </RelativeLayout>

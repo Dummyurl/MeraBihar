@@ -150,7 +150,7 @@
                 android:layout_marginRight="@dimen/activity_large_margin"
                 android:text="Tag with"/>
 
-            <app.zingo.merabihar.CustomViews.CustomAutoComplete
+            <app.zingo.merabihars.CustomViews.CustomAutoComplete
                 android:id="@+id/tagss_blog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
                 android:layout_marginBottom="5dp"
                 android:orientation="vertical">
 
-                <app.zingo.merabihar.CustomViews.CustomGridView
+                <app.zingo.merabihars.CustomViews.CustomGridView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:numColumns="2"

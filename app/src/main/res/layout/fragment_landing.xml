@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="app.zingo.merabihar.UI.ActivityScreen.Fragment.LandingFragment">
+    tools:context="app.zingo.merabihars.UI.ActivityScreen.Fragment.LandingFragment">
 
 
     <LinearLayout
@@ -123,7 +123,7 @@
                 android:textColor="@color/text_grey"
                 android:layout_marginBottom="15dp"
                 />
-            <app.zingo.merabihar.CustomViews.WrapContentViewPager
+            <app.zingo.merabihars.CustomViews.WrapContentViewPager
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"

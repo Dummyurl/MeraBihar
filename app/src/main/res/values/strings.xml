@@ -42,7 +42,7 @@
     <string name="welcome_desc">Bihar is a state in East India, bordering Nepal. It is divided by the River Ganges, which floods its fertile plains. Important Buddhist pilgrimage sites include the Bodhi Tree in Bodhgaya\'s Mahabodhi Temple, under which the Buddha allegedly meditated. In the state capital Patna, Mahavir Mandir temple is revered by Hindus, while Sikhs worship at the domed, riverside Gurdwara of Takht Sri Harmandir Sahib Ji.</string>
     <string name="welcome_descr">Every Year, over 6 Million Tourists land in Bihar to visit the remains of Ancient Nalanda University, the abode of Peace Bodhgaya, the mighty stupas of Vaishali, the misty mountains of Rajgir and other historic monuments dating back to 350 BC, scattered throughout the state.Here, you can trace the origin of World\'s two large religions and the origin of World's oldest democracy.Here you cannot afford to miss spotting Tiger Cubs at Valmiki Tiger Reserve, taking a Ropeway ride to Hills in Rajgir or an enchanting Ganga Cruise in Patna.</string>
 
-    <string name="file_provider_authority" translatable="false">app.zingo.merabihar.fileprovider</string>
+    <string name="file_provider_authority" translatable="false">app.zingo.merabihars.fileprovider</string>
 
     <array name="bihar_tourist_map">
         <item>@drawable/bhagalpur_map</item>

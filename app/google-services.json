@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "525372873773",
-    "firebase_url": "https://merabihar-993b4.firebaseio.com",
-    "project_id": "merabihar-993b4",
-    "storage_bucket": "merabihar-993b4.appspot.com"
+    "project_number": "199042490487",
+    "firebase_url": "https://merabihar-75a88.firebaseio.com",
+    "project_id": "merabihar-75a88",
+    "storage_bucket": "merabihar-75a88.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:525372873773:android:e99340b71aaa356f",
+        "mobilesdk_app_id": "1:199042490487:android:94d27a67eb4f4312",
         "android_client_info": {
-          "package_name": "app.zingo.merabihar"
+          "package_name": "app.zingo.merabihars"
         }
       },
       "oauth_client": [
         {
-          "client_id": "525372873773-4n4nvogii1n7f7jqi24bo2h9c5v183s3.apps.googleusercontent.com",
+          "client_id": "199042490487-sk4b2rm25d0ccao2s6bjfkpon3m6c5pf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "app.zingo.merabihar",
+            "package_name": "app.zingo.merabihars",
             "certificate_hash": "1f1380323348bc3b4e74e259dc5ff18fbfbb28bc"
           }
         },
         {
-          "client_id": "525372873773-mpk4q7mbg5vc8u6tggdcr00e1u3a036u.apps.googleusercontent.com",
+          "client_id": "199042490487-u94ghivacjnheapsd31bv3to44pbmqtp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAsFvcdRnQTRhgS1QZAXqNJw5fggYXr2mY"
+          "current_key": "AIzaSyBy-Qhd0xY7W3U2V-U6MxR_bscDGLODQZ0"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "525372873773-mpk4q7mbg5vc8u6tggdcr00e1u3a036u.apps.googleusercontent.com",
+              "client_id": "199042490487-u94ghivacjnheapsd31bv3to44pbmqtp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

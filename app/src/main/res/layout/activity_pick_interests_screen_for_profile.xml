@@ -67,7 +67,7 @@
             android:layout_below="@id/title"
             android:layout_above="@id/interest_continue_btn"
             >
-            <app.zingo.merabihar.CustomViews.CustomGridView
+            <app.zingo.merabihars.CustomViews.CustomGridView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="3"

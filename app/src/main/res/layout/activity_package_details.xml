@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="app.zingo.merabihar.UI.ActivityScreen.Events.PackageDetailsActivity">
+    tools:context="app.zingo.merabihars.UI.ActivityScreen.Events.PackageDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -132,7 +132,7 @@
                     android:textColor="@color/text_grey"
                     android:layout_marginBottom="15dp"
                     />
-                <app.zingo.merabihar.CustomViews.WrapContentViewPager
+                <app.zingo.merabihars.CustomViews.WrapContentViewPager
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"

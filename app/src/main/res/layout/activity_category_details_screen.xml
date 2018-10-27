@@ -134,7 +134,7 @@
                 </LinearLayout>
 
 
-                <app.zingo.merabihar.CustomViews.WrapContentViewPager
+                <app.zingo.merabihars.CustomViews.WrapContentViewPager
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
@@ -193,7 +193,7 @@
                 </LinearLayout>
 
 
-                <app.zingo.merabihar.CustomViews.CustomGridView
+                <app.zingo.merabihars.CustomViews.CustomGridView
                     android:id="@+id/sub_category_grid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
