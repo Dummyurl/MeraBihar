@@ -82,8 +82,8 @@ public class LoginScreen extends AppCompatActivity implements GoogleApiClient.On
         try{
 
             //Facebook
-            FacebookSdk.sdkInitialize(getApplicationContext());
-            AppEventsLogger.activateApp(this);
+/*            FacebookSdk.sdkInitialize(getApplicationContext());
+            AppEventsLogger.activateApp(this);*/
             setContentView(R.layout.activity_login_screen);
 
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN |

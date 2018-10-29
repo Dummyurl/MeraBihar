@@ -65,7 +65,7 @@ import retrofit2.Response;
 public class SignUpScreen extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private static ImageView mBack;
-    private static TextInputEditText mName,mEmail,mMobile,mPassword,mConfirmPassword;
+    private static TextInputEditText mName,mEmail,mMobile,mPassword,mConfirmPassword,mReferalCode;
     private static RadioButton mMale,mFemale,mOther;
     private static CheckBox mTerms;
     private static TextView mTermsCondition;
@@ -92,8 +92,8 @@ public class SignUpScreen extends AppCompatActivity implements GoogleApiClient.O
         try{
 
             //Facebook
-            FacebookSdk.sdkInitialize(getApplicationContext());
-            AppEventsLogger.activateApp(this);
+          //  FacebookSdk.sdkInitialize(getApplicationContext());
+            //AppEventsLogger.activateApp(this);
             setContentView(R.layout.activity_sign_up_screen);
 
 
@@ -112,6 +112,7 @@ public class SignUpScreen extends AppCompatActivity implements GoogleApiClient.O
             mMobile = (TextInputEditText)findViewById(R.id.mobile);
             mPassword = (TextInputEditText)findViewById(R.id.password);
             mConfirmPassword = (TextInputEditText)findViewById(R.id.confirmpwd);
+            mReferalCode = (TextInputEditText)findViewById(R.id.referCode);
 
             mMale = (RadioButton)findViewById(R.id.sign_up_male);
             mFemale = (RadioButton)findViewById(R.id.sign_up_female);
@@ -311,6 +312,7 @@ public class SignUpScreen extends AppCompatActivity implements GoogleApiClient.O
         String mobile = mMobile.getText().toString();
         String password = mPassword.getText().toString();
         String confirmPassword = mConfirmPassword.getText().toString();
+        String referal = mReferalCode.getText().toString();
 
         if(name==null||name.isEmpty()){
 
@@ -354,16 +356,41 @@ public class SignUpScreen extends AppCompatActivity implements GoogleApiClient.O
             profiles.setEmail(email);
             profiles.setPhoneNumber(mobile);
             profiles.setUserRoleId(1);
+            profiles.setMemberType("Beginner");
 
             profiles.setStatus("Active");
             profiles.setAuthType("Normal");
             profiles.setAuthId("Normal");
 
+
+
+
             SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
             profiles.setSignUpDate(sdf.format(new Date()));
            // postProfile(profiles);
+            /*if(referal!=null&&!referal.isEmpty()){
+                profiles.setReferralCodeUsed(referal);
+                checkUserByReferalCode(profiles,"Normal");
+            }else{
+                checkUserByEmailId(profiles,"Normal");
+            }*/
 
-            checkUserByEmailId(profiles,"Normal");
+            if(referal!=null&&!referal.isEmpty()){
+                profiles.setReferralCodeUsed(referal);
+                int i = 0;
+                if(referal.contains("MBR")){
+                    String refer = referal.replace("MBR","");
+                    i = Integer.parseInt(refer);
+                }
+                if(i!=0){
+                    checkUserByReferalCode(profiles,"Normal",i);
+                }
+
+            }else{
+                checkUserByEmailId(profiles,"Normal");
+            }
+
+
 
         }
 
@@ -727,6 +754,142 @@ public class SignUpScreen extends AppCompatActivity implements GoogleApiClient.O
                         {
                             dialog.dismiss();
                         }
+
+                        Log.e("TAG", t.toString());
+                    }
+                });
+            }
+        });
+    }
+
+    /*private void checkUserByReferalCode(final UserProfile userProfile,final String type,final int i){
+
+
+
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+
+                ProfileAPI apiService =
+                        Util.getClient().create(ProfileAPI.class);
+
+                Call<ArrayList<UserProfile>> call = apiService.getUserByPhone(userProfile);
+
+                call.enqueue(new Callback<ArrayList<UserProfile>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<UserProfile>> call, Response<ArrayList<UserProfile>> response) {
+//                List<RouteDTO.Routes> list = new ArrayList<RouteDTO.Routes>();
+                        int statusCode = response.code();
+
+                        if(statusCode == 200 || statusCode == 204)
+                        {
+                            ArrayList<UserProfile> responseProfile = response.body();
+                            if(responseProfile != null && responseProfile.size()!=0 )
+                            {
+
+                                checkUserByEmailId(userProfile,type);
+
+
+                            }
+                            else
+                            {
+
+                                mReferalCode.setError("Invalid Referal Code");
+                                mReferalCode.requestFocus();
+                            }
+                        }
+                        else
+                        {
+
+                            Toast.makeText(SignUpScreen.this,response.message(),Toast.LENGTH_SHORT).show();
+                        }
+//                callGetStartEnd();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<UserProfile>> call, Throwable t) {
+                        // Log error here since request failed
+
+                        Log.e("TAG", t.toString());
+                    }
+                });
+            }
+        });
+    }*/
+
+    private void checkUserByReferalCode(final UserProfile userProfile,final String type,final int i){
+
+
+
+
+        new ThreadExecuter().execute(new Runnable() {
+            @Override
+            public void run() {
+
+
+                ProfileAPI apiService =
+                        Util.getClient().create(ProfileAPI.class);
+
+                Call<UserProfile> call = apiService.getProfileById(i);
+
+                call.enqueue(new Callback<UserProfile>() {
+                    @Override
+                    public void onResponse(Call<UserProfile> call, Response<UserProfile> response) {
+//                List<RouteDTO.Routes> list = new ArrayList<RouteDTO.Routes>();
+                        int statusCode = response.code();
+
+                        if(statusCode == 200 || statusCode == 204)
+                        {
+                            UserProfile responseProfile = response.body();
+                            if(responseProfile != null  )
+                            {
+
+                                String referUsed = responseProfile.getReferralCodeUsed();
+                                String referParent = responseProfile.getReferralCodeOfParents();
+                                String referSuper = responseProfile.getReferralCodeOfSuperParents();
+
+                                if(referUsed!=null&&!referUsed.isEmpty()){
+                                    userProfile.setReferralCodeOfParents(referUsed);
+                                }else{
+                                    userProfile.setReferralCodeOfParents(userProfile.getReferralCodeUsed());
+                                }
+
+                                if(referSuper!=null&&!referSuper.isEmpty()){
+                                    userProfile.setReferralCodeOfSuperParents(referUsed);
+                                }else{
+                                    if(referParent!=null&&!referParent.isEmpty()){
+                                        userProfile.setReferralCodeOfSuperParents(referParent);
+                                    }else{
+                                        userProfile.setReferralCodeOfSuperParents(userProfile.getReferralCodeUsed());
+                                    }
+                                }
+
+
+
+                                checkUserByEmailId(userProfile,type);
+
+
+                            }
+                            else
+                            {
+
+                                mReferalCode.setError("Invalid Referal Code");
+                                mReferalCode.requestFocus();
+                            }
+                        }
+                        else
+                        {
+
+                            Toast.makeText(SignUpScreen.this,response.message(),Toast.LENGTH_SHORT).show();
+                        }
+//                callGetStartEnd();
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserProfile> call, Throwable t) {
+                        // Log error here since request failed
 
                         Log.e("TAG", t.toString());
                     }

@@ -10,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -45,6 +47,11 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
         super.onCreate(savedInstanceState);
 
         try {
+
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
             setContentView(R.layout.activity_tab_main);
 
             Bundle bundle = getIntent().getExtras();
@@ -84,7 +91,7 @@ public class TabMainActivity extends TabActivity implements TabHost.OnTabChangeL
             labelHome.setText(getResources().getString(R.string.home));
             imgHome.setImageResource(R.drawable.ic_home_black_24dp);
             tabHome.setIndicator(tabIndicatorHome);
-            Intent dash = new Intent(this, TabHomeScreen.class);
+            Intent dash = new Intent(this, TabHomeNewDesign.class);
             tabHome.setContent(dash);
 
             labelSearch.setText(getResources().getString(R.string.search));

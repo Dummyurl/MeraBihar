@@ -76,6 +76,36 @@ public class UserProfile  implements Serializable {
     @SerializedName("ReferralCodeUsed")
     private String ReferralCodeUsed;
 
+    @SerializedName("ReferralAmount")
+    private double ReferralAmount;
+
+    @SerializedName("ReferralCodeToUseForOtherProfile")
+    private String ReferralCodeToUseForOtherProfile;
+
+    @SerializedName("ReferralAmountForOtherProfile")
+    private double ReferralAmountForOtherProfile;
+
+    @SerializedName("WalletBalance")
+    private int WalletBalance;
+
+    @SerializedName("UsedAmount")
+    private int UsedAmount;
+
+    @SerializedName("VideoReferralCode")
+    private String VideoReferralCode;
+
+    @SerializedName("MemberType")
+    private String MemberType;
+
+    @SerializedName("ReferralCodeOfParents")
+    private String ReferralCodeOfParents;
+
+    @SerializedName("ReferralCodeOfSuperParents")
+    private String ReferralCodeOfSuperParents;
+
+    @SerializedName("reportedProfiles")
+    private ArrayList<ReportedProfiles> reportedProfiles;
+
     public int getProfileId() {
         return ProfileId;
     }
@@ -244,6 +274,85 @@ public class UserProfile  implements Serializable {
         ReferralCodeUsed = referralCodeUsed;
     }
 
+    public double getReferralAmount() {
+        return ReferralAmount;
+    }
+
+    public void setReferralAmount(double referralAmount) {
+        ReferralAmount = referralAmount;
+    }
+
+    public String getReferralCodeToUseForOtherProfile() {
+        return ReferralCodeToUseForOtherProfile;
+    }
+
+    public void setReferralCodeToUseForOtherProfile(String referralCodeToUseForOtherProfile) {
+        ReferralCodeToUseForOtherProfile = referralCodeToUseForOtherProfile;
+    }
+
+    public double getReferralAmountForOtherProfile() {
+        return ReferralAmountForOtherProfile;
+    }
+
+    public void setReferralAmountForOtherProfile(double referralAmountForOtherProfile) {
+        ReferralAmountForOtherProfile = referralAmountForOtherProfile;
+    }
+
+    public int getWalletBalance() {
+        return WalletBalance;
+    }
+
+    public void setWalletBalance(int walletBalance) {
+        WalletBalance = walletBalance;
+    }
+
+    public int getUsedAmount() {
+        return UsedAmount;
+    }
+
+    public void setUsedAmount(int usedAmount) {
+        UsedAmount = usedAmount;
+    }
+
+    public String getVideoReferralCode() {
+        return VideoReferralCode;
+    }
+
+    public void setVideoReferralCode(String videoReferralCode) {
+        VideoReferralCode = videoReferralCode;
+    }
+
+    public String getMemberType() {
+        return MemberType;
+    }
+
+    public void setMemberType(String memberType) {
+        MemberType = memberType;
+    }
+
+    public String getReferralCodeOfParents() {
+        return ReferralCodeOfParents;
+    }
+
+    public void setReferralCodeOfParents(String referralCodeOfParents) {
+        ReferralCodeOfParents = referralCodeOfParents;
+    }
+
+    public String getReferralCodeOfSuperParents() {
+        return ReferralCodeOfSuperParents;
+    }
+
+    public void setReferralCodeOfSuperParents(String referralCodeOfSuperParents) {
+        ReferralCodeOfSuperParents = referralCodeOfSuperParents;
+    }
+
+    public ArrayList<ReportedProfiles> getReportedProfiles() {
+        return reportedProfiles;
+    }
+
+    public void setReportedProfiles(ArrayList<ReportedProfiles> reportedProfiles) {
+        this.reportedProfiles = reportedProfiles;
+    }
 
     public static Comparator compareProfile = new Comparator() {
         @Override
